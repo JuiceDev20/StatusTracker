@@ -1,0 +1,76 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using StatusTracker.Services
+
+@model StatusTracker.Models.ViewModels.MyProjectsViewModel
+
+@inject UserManager<STUser> userManager
+@inject ISTAccessService accessService
+
+@{
+    ViewData["Title"] = "Index";
+    var userId = userManager.GetUserId(User);
+    var roleName = userManager.GetRolesAsync(await userManager.GetUserAsync(User)).Result.FirstOrDefault();
+
+}
+
+<h1>Projects</h1>
+
+<hr />
+<div class="row">
+    <div class="col-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-primary">My Projects</h4>
+                <table class="table">
+                    <thead class="thead-purple">
+                        <tr>
+                            <th>
+                                User
+                            </th>
+                            <th>
+                                Project Name
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Projects)
+                        {
+                            <tr>
+                                <td>
+                                    @Model.User.FullName
+                                </td>
+
+                                <td>
+                                    @item.Name
+                                </td>
+                                <td>
+                                    @if (await accessService.CanInteractProject(userId, roleName, item.Id))
+                                    {
+                                        <a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                        <a class="btn btn-outline-warning" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                    }
+                                    <span>
+                                        <a class="btn btn-outline-primary" asp-controller="Tickets" asp-action="Create" asp-route-id="@item.Id">Create Ticket</a>
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        @if (User.IsInRole("Admin") || User.IsInRole("ProjectManager"))
+        {
+            <p>
+                <a class="btn btn-outline-primary" asp-action="Create">Create New</a>
+            </p>
+        }
+    </div>
+</div>

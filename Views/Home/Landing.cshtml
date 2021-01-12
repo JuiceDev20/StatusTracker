@@ -1,0 +1,139 @@
+﻿@page
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <title>:: Status Tracker :: Home</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="description" content="Lucid Bootstrap 4x Admin Template">
+    <meta name="author" content="WrapTheme, design by: ThemeMakker.com">
+    <!-- This is my Favicon -->
+    <link rel="icon" href="~/assets/Images/favicon-32x32.png" type="image/x-icon">
+    <!-- VENDOR CSS -->
+
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/css/chartist.min.css" rel="stylesheet" />
+    <link href="~/css/chartist-plugin-tooltip.css" rel="stylesheet" />
+    <link href="~/css/toastr.min.css" rel="stylesheet" />
+
+    <!-- Tiny MCE Script -->
+    <script src="//cdn.tiny.cloud/1/l8uevwuzno0ksw0hxsz567wbuc969qkmvc4abwbzq6rr348m/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <!-- MAIN CSS -->
+    <link href="~/css/main.css" rel="stylesheet" />
+    <link href="~/css/color_skins.css" rel="stylesheet" />
+
+</head>
+<body class="theme-purple">
+    <!----------------->
+    <!-- Page Loader -->
+    <!----------------->
+    @*<div class="page-loader-wrapper">
+            <div class="loader">
+                <div class="m-t-30"><img src="~/assets/Images/ST-Logo.png" width="48" height="48" alt="Logo"></div>
+                <p>Please wait...</p>
+            </div>
+        </div>*@
+    <!------------>
+    <!-- Navbar -->
+    <!------------>
+
+    <nav class="navbar navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-btn">
+                <button type="button" class="btn-toggle-offcanvas"><i class="lnr lnr-menu fa fa-bars"></i></button>
+            </div>
+
+            <div class="navbar-brand">
+                <a img src="~/assets/Images/ST-Logo.png" alt="Status Tracker Logo" style="width: 48px; height:48px" class="img-responsive logo"></a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="text-center" style="margin-top: 180px">
+        <h1 class="display-1 text-warning">Welcome</h1>
+    </div>
+
+    <style>
+        body {
+            background-image: url('/assets/Images/auth_bg.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+
+    <!------------------>
+    <!-- Login Button -->
+    <!------------------>
+    <a class="nav-link btn btn-warning" asp-area="Identity" asp-page="/Account/Login" style="position:fixed; top:50%; left:55%; margin-right:-45%; transform: translate(-50%, -50%)">
+        Login
+    </a>
+
+    <!--------------------------------------------------->
+    <!-- Button to Open the Modal on the Landing page.-->
+    <!--------------------------------------------------->
+    <button type="button" style="position:fixed; top:50%; left:50%; margin-right:-50%; transform: translate(-50%, -50%)" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
+        About
+    </button>
+
+    <!--------------->
+    <!-- The Modal -->
+    <!--------------->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog-centered modal-dialog modal-xl">
+            <div class="modal-content">
+                <!------------------>
+                <!-- Modal Header -->
+                <!------------------>
+                <div class="modal-header justify-content-center bg-secondary">
+                    <h4 class="modal-title text-white">About Status Tracker</h4>
+                </div>
+                <!---------------->
+                <!-- Modal body -->
+                <!---------------->
+                <div class="modal-body bg-light justify-content-center">
+                    <pre><strong>
+                        Status Tracker is a Web-based software application designed to mirror any of a wide variety of bug tracking
+                        software systems in use by corporations throughout world. If a company develops software, whether for in-house
+                        use or distribution, it uses a bug tracking system to maintain an accurate record of the software development process
+                        on a per-project basis.
+
+                        Status Tracker is built as a Web-based service application using the Microsoft Visual Studio 2019, MVC architecture,
+                        MS Code-First database schema using Entity Framework with user- and role-level security, and web pages built with HTML4,
+                        Twitter Bootstrap, and model binding with Razor.
+
+                        Status Tracker is commercial-grade and performs to professional standards, comparable to similar commercial applications.
+                        It allows users to sort, filter, search, manage users, and assign tasks.
+
+                        Status Tracker is fully secured using Authentication and Authorization through Microsoft Entity Framework to prevent
+                        unauthorized persons from accessing user profile and account information. </strong>
+                    </pre>
+                </div>
+                <!------------------>
+                <!-- Modal footer -->
+                <!------------------>
+                <div class="modal-footer bg-secondary">
+                    <button type="button" class="btn btn-outline-warning" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="border-top footer w-100 fixed-bottom text-center">
+        <div class="container">
+            &copy; 2020 ~ Status Tracker ~ Created by: O J OLMO - Full Stack Developer
+        </div>
+    </footer>
+    <script src="~/js/libscripts.bundle.js"></script>
+
+</body>
+</html>

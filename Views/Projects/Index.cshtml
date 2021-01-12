@@ -1,0 +1,74 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using StatusTracker.Services
+@model IEnumerable<StatusTracker.Models.Project>
+@inject UserManager<STUser> userManager
+@inject ISTAccessService accessService
+
+@{
+    ViewData["Title"] = "Index";
+    var userId = userManager.GetUserId(User);
+    var roleName = userManager.GetRolesAsync(await userManager.GetUserAsync(User)).Result.FirstOrDefault();
+}
+
+<h1>Projects</h1>
+
+
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-primary">Current Projects</h4>
+                <table class="table m-b-0 table-hover">
+                    <thead class="thead-purple">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+                            @*<th>
+                                    @Html.DisplayNameFor(model => model.ImagePath)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ImageData)
+                                </th>*@
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.ImagePath)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ImageData)
+                                    </td>*@
+                                <td>
+                                    @if (await accessService.CanInteractProject(userId, roleName, item.Id))
+                                    {
+                                        <a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                        <a class="btn btn-outline-warning" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                    }
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (User.IsInRole("Admin") || User.IsInRole("ProjectManager"))
+{
+
+    <a class="btn btn-outline-primary" asp-action="Create">Create New</a>
+
+}
+
+<a class="btn btn-outline-info" asp-controller="Home" asp-action="Index">Back to Dashboard</a>

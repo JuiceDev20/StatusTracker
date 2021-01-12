@@ -1,0 +1,78 @@
+﻿@model StatusTracker.Models.TicketAttachment
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<hr />
+
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-primary">Ticket Attachment</h4>
+                <dl class="row">
+                    <dt class="col-sm-3">
+                        Description
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+                    <dt class="col-sm-3">
+                        Created
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Model.Created.ToString("MMM dd, yyyy")
+                    </dd>
+                    <dt class="col-sm-3">
+                        Ticket
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Ticket.Description)
+                    </dd>
+                    <dt class="col-sm-3">
+                        Owner
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.User.FullName)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="file">
+                <a asp-controller="Tickets" asp-action="DownloadFile">
+                    <div class="hover">
+                        <button type="button" class="btn btn-icon btn-warning"><i class="fa fa-file">Download</i></button>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TicketId" />
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @if (User.IsInRole("Admin, ProjectManager, Developer"))
+    {
+        <a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    }
+
+    <a class="btn btn-outline-info" asp-controller="TicketAttachments" asp-action="Index">Back to List</a>
+    <a class="btn btn-outline-info" asp-controller="Home" asp-action="Index">Back to Dashboard</a>
+</div>

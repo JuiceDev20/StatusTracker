@@ -1,0 +1,279 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using StatusTracker.Services
+@inject UserManager<STUser> UserManager
+@inject ISTAccessService AccessService
+@inject ISTRolesService RolesService
+
+
+<div class="container-fluid">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+                <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a>Nav Panel</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index"><i class="icon-home"></i></a></li>
+                    <li class="breadcrumb-item active">Home Dashboard</li>
+                </ul>
+            </div>
+
+            <!---------------------------->
+            <!-- Small Charts Top Right -->
+            <!---------------------------->
+            <div class="col-lg-6 col-md-4 col-sm-12 text-right">
+                <div class="bh_chart hidden-xs">
+                    <div class="float-left m-r-15">
+                        <small>Visitors</small>
+                        <h6 class="mb-0 mt-1"><i class="icon-user"></i> 1,784</h6>
+                    </div>
+                    <span class="bh_visitors float-right">2,5,1,8,3,6,7,5</span>
+                </div>
+                <div class="bh_chart hidden-sm">
+                    <div class="float-left m-r-15">
+                        <small>Visits</small>
+                        <h6 class="mb-0 mt-1"><i class="icon-globe"></i> 325</h6>
+                    </div>
+                    <span class="bh_visits float-right">10,8,9,3,5,8,5</span>
+                </div>
+                <div class="bh_chart hidden-sm">
+                    <div class="float-left m-r-15">
+                        <small>Chats</small>
+                        <h6 class="mb-0 mt-1"><i class="icon-bubbles"></i> 13</h6>
+                    </div>
+                    <span class="bh_chats float-right">1,8,5,6,2,4,3,2</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!------------------>
+<!-- Pie Chart #2 -->
+<!------------------>
+<div class="row">
+    <div class="col-3">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-primary">Ticket Status</h4>
+                <br />
+                <br />
+                <div id="mythirdchart"></div>
+            </div>
+        </div>
+    </div>
+    <!------------------>
+    <!-- Pie Chart #1 -->
+    <!------------------>
+    <div class="col-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h4 class="card-title text-primary">Ticket Types</h4>
+                <br />
+                <br />
+                <div id="mysecondchart"></div>
+            </div>
+        </div>
+    </div>
+    <!--------------->
+    <!-- Bar Chart -->
+    <!--------------->
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-primary">Ticket Priorities</h4>
+            </div>
+            <div class="body">
+                <div id="myfirstchart" class="chartist"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!---------------->
+<!-- Line Chart -->
+<!---------------->
+<div class="row">
+    <div class="col-10">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-primary">Project Work Schedule</h4>
+            </div>
+            <div class="body" style="height: 400px">
+                <div id="workSchedule" class="ct-chart"></div>
+            </div>
+        </div>
+    </div>
+
+    <!----------------->
+    <!-- Donot Chart -->
+    <!----------------->
+    <div class="col-2">
+        <div class="card justify-content-center">
+            <div class="card-body">
+                <h4 class="card-title text-primary">Staff</h4>
+                <div>
+                    <br />
+                    <h6 class="justify-content-center">Local</h6>
+                    <input type="text" class="knob2" data-linecap="round" value="67" data-width="125" data-height="125" data-thickness="0.15" data-fgColor="#49a9e5" readonly>
+                    <hr>
+                    <br>
+                    <h6 class="justify-content-center">Remote</h6>
+                    <input type="text" class="knob2" data-linecap="round" value="33" data-width="125" data-height="125" data-thickness="0.15" data-fgColor="#b880e1" readonly>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------------->
+<!-- Table w Avatars -->
+<!--------------------->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-primary">Employee Performance</h4>
+                <div class="table-responsive">
+                    <table class="table table-hover m-b-0">
+                        <thead class="thead-purple">
+                            <tr>
+                                <th>Avatar</th>
+                                <th>Name</th>
+                                <th>Designation</th>
+                                <th>Performance</th>
+                                <th>Work Location</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="~/assets/Images/avatar1.jpg" class="rounded-circle width35" alt=""></td>
+                                <td>Phil Black</td>
+                                <td><span>UI UX Designer</span></td>
+                                <td><span class="badge badge-success">Good</span></td>
+                                <td class="text-primary">Local</td>
+                            </tr>
+                            <tr>
+                                <td><img src="~/assets/Images/avatar2.jpg" class="rounded-circle width35" alt=""></td>
+                                <td>Erin Crommett</td>
+                                <td><span>DB Architect</span></td>
+                                <td><span class="badge badge-primary">Excellent</span></td>
+                                <td class="text-danger">Remote</td>
+                            </tr>
+                            <tr>
+                                <td><img src="~/assets/Images/avatar3.jpg" class="rounded-circle width35" alt=""></td>
+                                <td>Alice Guilfoyle</td>
+                                <td><span>Team Leader</span></td>
+                                <td><span class="badge badge-primary">Excellent</span></td>
+                                <td class="text-primary">Local</td>
+                            </tr>
+                            <tr>
+                                <td><img src="~/assets/Images/avatar2.jpg" class="rounded-circle width35" alt=""></td>
+                                <td>Beth Olmo</td>
+                                <td><span>Sr. Project Manager</span></td>
+                                <td><span class="badge badge-primary">Excellent</span></td>
+                                <td class="text-primary">Local</td>
+                            </tr>
+                            <tr>
+                                <td><img src="~/assets/Images/avatar4.jpg" class="rounded-circle width35" alt=""></td>
+                                <td>Lucy Black</td>
+                                <td><span>Android Developer</span></td>
+                                <td><span class="badge badge-success">Good</span></td>
+                                <td class="text-danger">Remote</td>
+                            </tr>
+                            <tr>
+                                <td><img src="~/assets/Images/avatar5.jpg" class="rounded-circle width35" alt=""></td>
+                                <td>Gene Rassmusen</td>
+                                <td><span>Server SME</span></td>
+                                <td><span class="badge badge-warning">Average</span></td>
+                                <td class="text-primary">Local</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+
+    <script>
+        //Construct the URL needed to draw the chart.
+        var Url1 = '@Url.Action("PriorityChart", "Charts")';
+        var data = {
+            labels: [],
+            series: []
+        };
+        $.post(Url1).then(function (response) {
+            console.log(response);
+            response.forEach(el => {
+                console.log(el);
+                data.labels.push(el.name);
+                data.series.push(el.count);
+            });
+            console.log(data);
+
+            new Chartist.Bar('#myfirstchart', data, {
+                height: "230px",
+                distributeSeries: true
+            });
+
+        });
+
+        //Second Chart - Pie - T-Types
+        var Url2 = '@Url.Action("TypeChart", "Charts")';
+        var piedata = {
+            labels: [],
+            series: []
+        };
+        $.post(Url2).then(function (response) {
+            console.log(response);
+            response.forEach(el => {
+              //  console.log(el);
+                piedata.labels.push(el.name);
+                piedata.series.push(el.count);
+            });
+                //  console.log(data);
+            new Chartist.Pie('#mysecondchart', piedata, {
+                height: "230px",
+                chartPadding: 30,
+                labelOffset: 50,
+                labelDirection: 'explode',
+                plugins: [Chartist.plugins.tooltip()]
+
+            });
+
+        });
+
+      //Third Chart - Pie - S-Types
+        var Url3 = '@Url.Action("StatusChart", "Charts")';
+        var statusdata = {
+            labels: [],
+            series: []
+        };
+        $.post(Url3).then(function (response) {
+            console.log(response);
+            response.forEach(el => {
+              //  console.log(el);
+                statusdata.labels.push(el.name);
+                statusdata.series.push(el.count);
+            });
+          //  console.log(data);
+            new Chartist.Pie('#mythirdchart', statusdata, {
+                height: "230px",
+                chartPadding: 30,
+                labelOffset: 50,
+                labelDirection: 'explode',
+                plugins: [Chartist.plugins.tooltip()]
+
+            });
+
+        });
+
+    </script>
+
+}
+
+
+

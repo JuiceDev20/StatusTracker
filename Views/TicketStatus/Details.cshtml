@@ -1,0 +1,42 @@
+﻿@model StatusTracker.Models.TicketStatus
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<hr />
+
+<div>
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title text-primary">Ticket Status</h4>
+                    <dl class="row">
+                        <dt class="col-sm-3">
+                            Name
+                        </dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (User.IsInRole("Admin") || User.IsInRole("ProjectManager") || User.IsInRole("Developer"))
+{
+    <a class="btn btn-info" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    <a class="btn btn-outline-info" asp-controller="TicketStatus" asp-action="Index">Back to List</a>
+}
+
+@if (User.IsInRole("Admin") || User.IsInRole("ProjectManager"))
+{
+    <a class="btn btn-outline-info" asp-controller="Home" asp-action="Index">Back to Dashboard 1</a>
+    <a class="btn btn-outline-info" asp-controller="Home" asp-action="Dashboard">Back to Dashboard 2</a>
+}
+

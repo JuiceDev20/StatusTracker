@@ -1,0 +1,64 @@
+﻿@model StatusTracker.Models.TicketHistory
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<hr />
+
+<div>
+    <div class="row">
+        <div class="col-9">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title text-primary">Ticket History</h4>
+                    <dl class="row">
+                        <dt class="col-sm-3">
+                            Property
+                        </dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.Property)
+                        </dd>
+                        <dt class="col-sm-3">
+                            Old Value
+                        </dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.OldValue)
+                        </dd>
+                        <dt class="col-sm-3">
+                            New Value
+                        </dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.NewValue)
+                        </dd>
+                        <dt class="col-sm-3">
+                            Created
+                        </dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.Created)
+                        </dd>
+                        <dt class="col-sm-3">
+                            Ticket
+                        </dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.Ticket.Description)
+                        </dd>
+                        <dt class="col-sm-3">
+                            Owner
+                        </dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.User.FullName)
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div>
+    <a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    <a class="btn btn-outline-info" asp-controller="Home" asp-action="Index">Back to List</a>
+    <a class="btn btn-outline-info" asp-controller="Home" asp-action="Dashboard">Back to Dashboard 2></a>
+</div>

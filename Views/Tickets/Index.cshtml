@@ -1,0 +1,85 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using StatusTracker.Services
+@model IEnumerable<StatusTracker.Models.Ticket>
+@inject UserManager<STUser> userManager
+@inject ISTAccessService accessService
+
+@{
+    ViewData["Title"] = "Index";
+    var userId = userManager.GetUserId(User);
+    var roleName = userManager.GetRolesAsync(await userManager.GetUserAsync(User)).Result.FirstOrDefault();
+}
+
+<h1>All Active Tickets</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-primary">Overview</h4>
+                <table class="table m-b-0 table-hover">
+                    <thead class="thead-purple">
+                        <tr>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Created</th>
+                            <th>Updated</th>
+                            <th>Project</th>
+                            <th>Ticket Type</th>
+                            <th>Ticket Priority</th>
+                            <th>Ticket Status</th>
+                            <th>Owner</th>
+                            <th>Developer</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Title)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+                                <td>
+                                    @item.Created.ToString("MM/dd/yyyy")
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Updated)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Project.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TicketType.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TicketPriority.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TicketStatus.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.OwnerUser.FullName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DeveloperUser.FullName)
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <a class="btn btn-outline-info" asp-controller="Home" asp-action="Index">Back to Dashboard</a>
+</div>

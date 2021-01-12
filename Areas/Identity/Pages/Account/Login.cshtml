@@ -1,0 +1,124 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <title>:: Status Tracker :: Login</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="description" content="Lucid Bootstrap 4x Admin Template">
+    <meta name="author" content="WrapTheme, design by: ThemeMakker.com">
+
+    <link rel="icon" href="~/assets/Images/favicon-32x32.png" type="image/x-icon" >
+    <!-- VENDOR CSS -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="~/css/color_skins.css">
+</head>
+<body class="theme-purple">
+    <!-- WRAPPER -->
+    <div id="wrapper">
+        <div class="vertical-align-wrap background-image" >
+            <div class="vertical-align-middle auth-main">
+                <div class="auth-box">
+                    <div class="top">
+                        <img src="~/assets/Images/ST-Logo.png" alt="Status Tracker">
+                    </div>
+                    <div class="card">
+                        <div class="header">
+                            <p class="lead">Login to your account</p>
+                        </div>
+                        <div class="body">
+                            <form class="form-auth-small" id="account" method="post">
+                                <div class="form-group">
+                                    <label for="signin-email" class="control-label sr-only">Email</label>
+                                    <input asp-for="Input.Email" class="form-control" id="signin-email" value="" placeholder="Email">
+                                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="signin-password" class="control-label sr-only">Password</label>
+                                    <input asp-for="Input.Password" class="form-control" id="signin-password" value="" placeholder="Password">
+                                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="fancy-checkbox element-left">
+                                        <input asp-for="Input.RememberMe" type="checkbox" /><span>Remember me</span>
+                                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                                    </label>
+                                </div>
+                                <div>
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
+                                </div>
+
+                                <div class="bottom">
+                                    <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a asp-page="./ForgotPassword">Forgot password?</a></span>
+                                    <span>Don't have an account? <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register</a></span>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" style="position:fixed; top:70%; left:30%; right:auto">
+        <div class="card-columns justify-content-end">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="card-title text-dark">
+                        <form method="post">
+                            <p>Granted unlimited access and permissions throughout the application.</p>
+                            <button type="submit" name="demoEmail" value="DemoAdminEmail" class="btn btn-outline-info">Demo Admin</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="card-title text-dark">
+                        <form method="post">
+                            <p>Granted unlimited access and permissions conmensurate with role and assignments.</p>
+                            <button type="submit" name="demoEmail" value="DemoPMEmail" class="btn btn-outline-danger">Demo PM</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="card-title text-dark">
+                        <form method="post">
+                            <p>Granted access and permissions conmensurate with role and assignments.</p>
+                            <button type="submit" name="demoEmail" value="DemoDevEmail" class="btn btn-outline-success">Demo Dev</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="card-title text-dark">
+                        <form method="post">
+                            <p>Granted access and permissions conmensurate with role and assignments.</p>
+                            <button type="submit" name="demoEmail" value="DemoSubEmail" class="btn btn-outline-warning">Demo Sub</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

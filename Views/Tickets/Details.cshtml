@@ -1,0 +1,139 @@
+﻿@model StatusTracker.Models.Ticket
+
+@using StatusTracker.Services
+@inject ISTFileService STFileService
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4 class="text-primary">Ticket</h4>
+    <hr />
+
+    <div class="card-deck">
+        <div class="card bg-light">
+            <div class="card-body">
+                <h5 class="card-title text-primary">Attributes</h5>
+                <ul>
+                    <li>
+                        <h6>Ticket Type: @Model.TicketType.Name </h6>
+                        <h6>Ticket Priority: @Model.TicketPriority.Name </h6>
+                        <h6>Ticket Status: @Model.TicketStatus.Name </h6>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="card bg-light">
+            <div class="card-body">
+                <h4 class="card-title text-primary">Details</h4>
+                <ul>
+                    <li>
+                        <h6>Title: @Model.Title </h6>
+                        <h6>Description: @Model.Description </h6>
+                        <h6>Created: @Model.Created </h6>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="card bg-light">
+            <div class="card-body">
+                <h4 class="card-title text-primary">Project Team</h4>
+                <ul>
+                    <li>
+                        <h6>Project: @Model.Project.Name </h6>
+                        <h6>Developer: @Model.DeveloperUser.FullName </h6>
+                        <h6>Owner: @Model.OwnerUser.FullName. </h6>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+
+<div class="card-deck">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title text-primary">Add Attachment</h4>
+            <form asp-action="Create" asp-controller="TicketAttachments" enctype="multipart/form-data" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="@Model.Id" name="TicketId">
+
+                <div class="media-body ml-3">
+                    <label class="form-label d-block mb-2"></label>
+                    <label>
+                        Add Description
+                        <input asp-for="@Model.Attachments.FirstOrDefault().Description" type="text" class="form-control" />
+                    </label>
+                    <br />
+                    <label class="btn btn-outline-primary btn-sm">
+                        <input asp-for="@Model.Attachments.FirstOrDefault().FormFile" type="file" />
+                    </label>
+                    
+                </div>
+                <button type="submit" class="btn btn-outline-success btn md-btn-flat">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title text-primary">Add Comment</h4>
+            <form asp-controller="TicketComments" asp-action="Create" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @Html.Hidden("TicketId", Model.Id)
+                <div class="form-group">
+                    <textarea name="Comment" class="form-control" required placeholder="Post a comment" rows="5"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-outline-success" />
+                </div>
+            </form>
+        </div>
+    </div>
+   
+</div>
+<hr />
+
+<div class="card-deck">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title text-primary">Attachments</h4>
+            <ul>
+                <li>
+                    @foreach (var attachment in Model.Attachments)
+                    {<h5>@attachment.FileName</h5>}
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title text-primary">Comments</h4>
+            <ul>
+                <li>
+                    @foreach (var comment in Model.Comments)
+                    {<h5>@comment.Comment</h5>}
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div>
+    @if (User.IsInRole("Admin") || User.IsInRole("ProjectManager") || User.IsInRole("Developer"))
+    {
+        <a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    }
+
+    <a class="btn btn-outline-info" asp-controller="Tickets" asp-action="MyTickets">Back to List</a>
+    <a class="btn btn-outline-info" asp-controller="Home" asp-action="Index">Back to Dashboard</a>
+</div>
+

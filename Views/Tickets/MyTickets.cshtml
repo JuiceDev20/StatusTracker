@@ -1,0 +1,120 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using StatusTracker.Services
+@model IEnumerable<StatusTracker.Models.Ticket>
+@inject UserManager<STUser> userManager
+@inject ISTAccessService accessService
+
+@{
+    ViewData["Title"] = "Index";
+    var userId = userManager.GetUserId(User);
+    var roleName = userManager.GetRolesAsync(await userManager.GetUserAsync(User)).Result.FirstOrDefault();
+}
+
+<h1>My Tickets</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <table class="table m-b-0 table-hover">
+                    <thead class="thead-purple">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Title)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Description)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Created)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Updated)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Project)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.TicketType)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.TicketPriority)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.TicketStatus)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.OwnerUser)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DeveloperUser)
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Title)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Created)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Updated)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Project.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TicketType.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TicketPriority.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TicketStatus.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.OwnerUser.FullName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DeveloperUser.FullName)
+                                </td>
+                                <td>
+                                    @if (await accessService.CanInteractTicket(userId, roleName, item.Id))
+                                    {
+                                        <a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                        <a class="btn btn-outline-warning" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                    }
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@if (User.IsInRole("Admin") || User.IsInRole("ProjectManager") || User.IsInRole("Developer"))
+{
+    <p>
+        <a class="btn btn-outline-primary" asp-action="Create">Create New</a>
+    </p>
+}
+<div>
+    <a class="btn btn-outline-info" asp-controller="Home" asp-action="Index">Back to Dashboard</a>
+</div>

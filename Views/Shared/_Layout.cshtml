@@ -1,0 +1,205 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using StatusTracker.Services
+@inject UserManager<STUser> UserManager
+@inject ISTAccessService AccessService
+@inject ISTRolesService RolesService
+
+@{
+    var message = (string)TempData["DemoLockout"];
+}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>:: Status Tracker :: Home</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <!-- This is my Favicon -->
+    <link rel="icon" href="#" type="image/x-icon">
+    <!-- VENDOR CSS -->
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/css/chartist.css" rel="stylesheet" />
+    <link href="~/css/chartist-plugin-tooltip.css" rel="stylesheet" />
+    <link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/css/toastr.css" rel="stylesheet" />
+
+    @RenderSection("css", required: false)
+    <!-- Tiny MCE Script -->
+
+    <script src="//cdn.tiny.cloud/1/l8uevwuzno0ksw0hxsz567wbuc969qkmvc4abwbzq6rr348m/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='//kit.fontawesome.com/a076d05399.js'></script>
+    <!-- MAIN CSS -->
+    <link href="~/css/main.css" rel="stylesheet" />
+    <link href="~/css/color_skins.css" rel="stylesheet" />
+</head>
+<body class="theme-purple">
+
+    <!----------------->
+    <!-- Page Loader -->
+    <!----------------->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="m-t-30"><img src="~/assets/Images/ST-LoaderPage.png" alt="Status Tracker"></div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-------------------------->
+    <!-- Overlay For Sidebars -->
+    <!-------------------------->
+
+    <div id="wrapper">
+        <!---------------->
+        <!-- Top Navbar -->
+        <!---------------->
+        <nav class="navbar navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-btn">
+                    <button type="button" class="btn-toggle-offcanvas"><i class="lnr lnr-menu fa fa-bars"></i></button>
+                </div>
+
+                <div class="navbar-brand">
+                    <a asp-controller="Home" asp-action="Index"><img src="~/assets/Images/ST-Logo.png" alt="Status Tracker Logo" style="width: 48px; height:48px" class="img-responsive logo"></a>
+                </div>
+
+                <div class="navbar-right">
+                    <form id="navbar-search" class="navbar-form search-form">
+                        <input value="" class="form-control" placeholder="Search here..." type="text">
+                        <button type="button" class="btn btn-default"><i class="icon-magnifier"></i></button>
+                    </form>
+                    <!--------------------------------------------------------------->
+                    <!-- Top Navbar Right-Corner (Calendar, Chat, Email) Navigation-->
+                    <!--------------------------------------------------------------->
+
+                    <div id="navbar-menu">
+                        <ul class="nav navbar-nav">
+                            <li><a asp-controller="Home" asp-action="Index" class="icon-menu d-none d-sm-block"><i class="icon-home"></i></a></li>
+                            <li><a asp-controller="Home" asp-action="Dashboard" class="icon-menu d-none d-sm-block"><i class="icon-anchor"></i></a></li>
+                            <li><a asp-controller="Projects" asp-action="Index" class="icon-menu d-none d-sm-block"><i class="icon-grid"></i></a></li>
+                            <li><a asp-controller="Tickets" asp-action="Index" class="icon-menu d-none d-sm-block"><i class="icon-list"></i></a></li>
+                            @*<li><a asp-controller="Tickets" asp-action="#"><i class="icon-fire"></i>Urgent Tickets</a></li>*@
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+        <!---------------------->
+        <!-- Left Side Navbar -->
+        <!---------------------->
+
+        <div id="left-sidebar" class="sidebar">
+            <div class="sidebar-scroll">
+                <div class="user-account">
+                    <img src="~/assets/Images/avatar9.jpg" class="rounded-circle user-photo" alt="User Profile Picture">
+                    <div class="dropdown">
+                        <partial name="_LoginPartial" />
+                        <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong></strong></a>
+                        <ul class="dropdown-menu dropdown-menu-right account animated flipInY">
+
+                            <li><a asp-controller="Home" asp-action="/Account/Logout" asp-route-returnurl="@Url.Action("Landing", "Home", new { area = "" })"><i class="icon-power"></i>Logout</a></li>
+                        </ul>
+                        <form class="form-check-inline" id="demologoutform" asp-area="Identity" asp-page="/Account/Logout" asp-route-url="/Identity/Account/Login"></form>
+                    </div>
+                    <hr>
+                </div>
+                <!-------------->
+                <!-- Nav tabs -->
+                <!-------------->
+                <ul class="nav nav-tabs">
+                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#hr_menu">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#project_menu">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#setting">Tickets</a></li>
+
+                </ul>
+                <!------------------>
+                <!-- Overview Tab -->
+                <!------------------>
+                <div class="tab-content p-l-0 p-r-0">
+                    <div class="tab-pane animated fadeIn active" id="hr_menu">
+                        <nav class="sidebar-nav">
+                            <ul class="main-menu metismenu">
+  
+                                <li><a asp-controller="Projects" asp-action="Index"><i class="icon-grid"></i>Current Projects</a></li>
+                                <li><a asp-controller="Tickets" asp-action="Index"><i class="icon-list"></i>All Tickets</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!----------------->
+                    <!-- Project Tab -->
+                    <!----------------->
+                    <div class="tab-pane animated fadeIn table-active" id="project_menu">
+                        <nav class="sidebar-nav">
+                            <ul class="main-menu metismenu">
+                                <li><a asp-controller="Projects" asp-action="MyProjects"><i class="icon-lock"></i>My Projects</a></li>
+                                <li><a asp-controller="Projects" asp-action="Create"><i class="icon-bulb"></i>Create</a></li>
+                                <li><a asp-controller="UserRoles" asp-action="ManageUserRoles"><i class="icon-users"></i>User Roles</a></li>
+
+                            </ul>
+                        </nav>
+                    </div>
+                    <!----------------->
+                    <!-- Ticket Tab -->
+                    <!----------------->
+                    <div class="tab-pane animated fadeIn table-active" id="setting">
+                        <nav class="sidebar-nav">
+                            <ul class="main-menu metismenu">
+                                <li><a asp-controller="Tickets" asp-action="MyTickets"><i class="icon-lock"></i>My Tickets</a></li>
+                                <li><a asp-controller="TicketAttachments" asp-action="Index"><i class="icon-cloud-upload"></i>Ticket Attachments</a></li>
+                                <li><a asp-controller="TicketComments" asp-action="Index"><i class="icon-pencil"></i>Ticket Comments</a></li>
+                                <li><a asp-controller="TicketHistories" asp-action="Index"><i class="icon-calendar"></i>Ticket Histories</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!------------------------------>
+        <!-- Render Body R-tag--------->
+        <!------------------------------>
+        <div class="container-fluid" style="margin-top: 90px; padding-right: 100px; padding-left: 300px">
+            <main>
+                @RenderBody()
+            </main>
+
+        </div>
+        <!------------>
+        <!-- Footer -->
+        <!------------>
+        <footer class="border-top footer w-100 fixed-bottom text-center text-primary">
+            <div>
+                &copy; 2020 ~ Status Tracker ~ Created by: O J OLMO ~ Full Stack Dev
+            </div>
+        </footer>
+
+    </div>
+
+    <!---------------->
+    <!-- Javascript -->
+    <!---------------->
+
+    <script src="~/js/libscripts.bundle.js"></script>
+    <script src="~/js/vendorscripts.bundle.js"></script>
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="~/js/toastr.js"></script>
+    <script src="~/js/chartist.bundle.js"></script>
+    <script src="~/js/knob.bundle.js"></script>
+    <script src="~/js/mainscripts.bundle.js"></script>
+    <script src="~/js/index.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.table').DataTable();
+            tinymce.init({ selector: '#Body' });
+        });
+
+    </script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

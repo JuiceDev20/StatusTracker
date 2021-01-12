@@ -1,0 +1,101 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@model IEnumerable<StatusTracker.Models.ViewModels.ManageUserRolesViewModel>
+
+@inject UserManager<STUser> userManager
+
+<h1 class="text-center">All Users</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-9">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-primary">Review / Change User's Role</h4>
+                <table class="table">
+                    <thead class="thead-purple">
+                        <tr>
+                            <th>
+                                First Name
+                            </th>
+                            <th>
+                                Last Name
+                            </th>
+                            <th>
+                                Current Role
+                            </th>
+                            <th>
+                                Manage Roles
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var stuser in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @stuser.User.FirstName
+                                </td>
+                                <td>
+                                    @stuser.User.LastName
+                                </td>
+                                <td>
+                                    @{ var role = (await userManager.GetRolesAsync(stuser.User)).FirstOrDefault();
+                                        if (role == "ProjectManager")
+                                        {
+                                            role = "Project Manager";
+                                        }
+                                        if (role == "NewUser")
+                                        {
+                                            role = "Unassigned";
+                                        }
+                                    }
+                                    <span>@role</span>
+                                </td>
+                                <td>
+                                    <a data-target="#a-@stuser.User.Id" data-toggle="modal" class="btn btn-outline-info">Manage Roles</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@foreach (var stuser in Model)
+{
+    <div class="modal fade" id="a-@stuser.User.Id">
+        <div class="modal modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Manage Roles for @stuser.User.FullName</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="text-muted font-13 m-b-30">
+                        This form displays the current roles assigned to the user: @stuser.User.FullName. Use the dropdown to select the roles that this user should be assigned. Once roles are selected, click "Assign Roles" to submit the form.
+                    </p>
+                    <hr />
+                    <form asp-controller="UserRoles" asp-action="ManageUserRoles" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="@stuser.User.Id">
+                        <div class="form-group">
+                            <label asp-for="@stuser.Roles" class="control-label">Roles for @stuser.User.FullName</label>
+                            <select asp-for="@stuser.SelectedRoles" class="form-control" asp-items="@stuser.Roles" multiple="multiple"></select>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <input type="submit" value="Assign Roles" class="btn btn-outline-info float-left" />
+                            <button class="btn btn-outline-danger float-right" data-dismiss="modal" type="button">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

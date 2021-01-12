@@ -1,0 +1,71 @@
+﻿@model IEnumerable<StatusTracker.Models.TicketHistory>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1> Ticket Histories</h1>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-primary">Overview</h4>
+                <table class="table m-b-0 table-hover">
+                    <thead class="thead-purple">
+                        <tr>
+                            <th>Property</th>
+                            <th>Old Value</th>
+                            <th>New Value</th>
+                            <th>Created</th>
+                            <th>Ticket</th>
+                            <th>Owner</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Property)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.OldValue)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NewValue)
+                                </td>
+                                <td>
+                                    @item.Created.ToString("MM/dd/yyyy")
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Ticket.Description)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.User.FullName)
+                                </td>
+                                <td>
+                                    @if (User.IsInRole("Admin") || User.IsInRole("ProjectManager"))
+                                    {
+                                        <a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                        <a class="btn btn-outline-warning" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                       
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-outline-info" asp-controller="Home" asp-action="Index">Back to Dashboard</a>
+    <a class="btn btn-outline-info" asp-controller="Home" asp-action="Dashboard">Back to Dashboard 2</a>
+</div>
+
+

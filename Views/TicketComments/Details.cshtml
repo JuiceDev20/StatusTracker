@@ -1,0 +1,59 @@
+﻿@model StatusTracker.Models.TicketComment
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    
+    <hr />
+
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title text-primary">Ticket Comment</h4>
+                    <dl class="row">
+                        <dt class="col-sm-3">
+                            Comment
+                        </dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.Comment)
+                        </dd>
+                        <dt class="col-sm-3">
+                            Created
+                        </dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.Created)
+                        </dd>
+                        <dt class="col-sm-3">
+                            Ticket
+                        </dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.Ticket.Description)
+                        </dd>
+                        <dt class="col-sm-3">
+                            Owner
+                        </dt>
+                        <dd class="col-sm-9">
+                            @Html.DisplayFor(model => model.User.UserName)
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+</div>
+<div>
+    @if (User.IsInRole("Admin") || User.IsInRole("ProjectManager"))
+    {
+        <a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    }
+
+    <a class="btn btn-outline-info" asp-controller="TicketComments" asp-action="Index">Back to List</a>
+    <a class="btn btn-outline-info" asp-controller="Home" asp-action="Index">Back to  Dashboard</a>
+</div>
+
