@@ -107,8 +107,8 @@ namespace StatusTracker.Data
             #region ProjectManager1 Seed
             defaultUser = new STUser
             {
-                UserName = "beth@gmail.com",
-                Email = "beth@gmail.com",
+                UserName = "beth@mailinator.com",
+                Email = "beth@mailinator.com",
                 FirstName = "Beth",
                 LastName = "Olmo",
                 EmailConfirmed = true
@@ -135,8 +135,8 @@ namespace StatusTracker.Data
             #region ProjectManager2 Seed
             defaultUser = new STUser
             {
-                UserName = "alice@gmail.com",
-                Email = "alice@gmail.com",
+                UserName = "alice@mailinator.com",
+                Email = "alice@mailinator.com",
                 FirstName = "Alice",
                 LastName = "Guilfoyle",
                 EmailConfirmed = true
@@ -220,8 +220,8 @@ namespace StatusTracker.Data
             #region Developer2 Seed
             defaultUser = new STUser
             {
-                UserName = "lucy@gmail.com",
-                Email = "lucy@gmail.com",
+                UserName = "lucy@mailinator.com",
+                Email = "lucy@mailinator.com",
                 FirstName = "Lucy",
                 LastName = "Black",
                 EmailConfirmed = true
@@ -248,8 +248,8 @@ namespace StatusTracker.Data
             #region Developer3 Seed
             defaultUser = new STUser
             {
-                UserName = "cindy@gmail.com",
-                Email = "cindy@gmail.com",
+                UserName = "cindy@mailinator.com",
+                Email = "cindy@mailinator.com",
                 FirstName = "Cindy",
                 LastName = "Kane",
                 EmailConfirmed = true
@@ -276,8 +276,8 @@ namespace StatusTracker.Data
             #region Developer4 Seed
             defaultUser = new STUser
             {
-                UserName = "jack@gmail.com",
-                Email = "jack@gmail.com",
+                UserName = "jack@mailinator.com",
+                Email = "jack@mailinator.com",
                 FirstName = "Jack",
                 LastName = "Guilfoyle",
                 EmailConfirmed = true
@@ -333,8 +333,8 @@ namespace StatusTracker.Data
             #region Submitter1 Seed
             defaultUser = new STUser
             {
-                UserName = "van@gmail.com",
-                Email = "van@gmail.com",
+                UserName = "van@mailinator.com",
+                Email = "van@mailinator.com",
                 FirstName = "Van",
                 LastName = "Weinman",
                 EmailConfirmed = true
@@ -361,8 +361,8 @@ namespace StatusTracker.Data
             #region Submitter2 Seed
             defaultUser = new STUser
             {
-                UserName = "phil@gmail.com",
-                Email = "phil@gmail.com",
+                UserName = "phil@mailinator.com",
+                Email = "phil@mailinator.com",
                 FirstName = "Phil",
                 LastName = "Black",
                 EmailConfirmed = true
@@ -389,8 +389,8 @@ namespace StatusTracker.Data
             #region Submitter3 Seed
             defaultUser = new STUser
             {
-                UserName = "Tere@gmail.com",
-                Email = "Tere@gmail.com",
+                UserName = "Tere@mailinator.com",
+                Email = "Tere@mailinator.com",
                 FirstName = "Tere",
                 LastName = "Olmo",
                 EmailConfirmed = true
@@ -446,8 +446,8 @@ namespace StatusTracker.Data
             #region NewUser Seed
             defaultUser = new STUser
             {
-                UserName = "gene@gmail.com",
-                Email = "gene@gmail.com",
+                UserName = "gene@mailinator.com",
+                Email = "gene@mailinator.com",
                 FirstName = "Gene",
                 LastName = "Rassmussen",
                 EmailConfirmed = true
@@ -693,11 +693,11 @@ namespace StatusTracker.Data
         {
             Project seedProject1 = new Project
             {
-                Name = "Blog Project"
+                Name = "Blog App"
             };
             try
             {
-                var newProject = await context.Projects.FirstOrDefaultAsync(p => p.Name == "Blog Project");
+                var newProject = await context.Projects.FirstOrDefaultAsync(p => p.Name == "Blog App");
                 if (newProject == null)
                 {
                     await context.Projects.AddAsync(seedProject1);
@@ -714,11 +714,11 @@ namespace StatusTracker.Data
 
             Project seedProject2 = new Project
             {
-                Name = "Status Tracker Project"
+                Name = "Status Tracker"
             };
             try
             {
-                var newProject = await context.Projects.FirstOrDefaultAsync(p => p.Name == "Status Tracker Project");
+                var newProject = await context.Projects.FirstOrDefaultAsync(p => p.Name == "Status Tracker");
                 if (newProject == null)
                 {
                     await context.Projects.AddAsync(seedProject2);
@@ -735,11 +735,11 @@ namespace StatusTracker.Data
 
             Project seedProject3 = new Project
             {
-                Name = "Financial Portal Project"
+                Name = "Financial Portal"
             };
             try
             {
-                var newProject = await context.Projects.FirstOrDefaultAsync(p => p.Name == "Financial Portal Project");
+                var newProject = await context.Projects.FirstOrDefaultAsync(p => p.Name == "Financial Portal");
                 if (newProject == null)
                 {
                     await context.Projects.AddAsync(seedProject3);
@@ -782,9 +782,9 @@ namespace StatusTracker.Data
             string projectManagerId = (await userManager.FindByEmailAsync("Eli@mailinator.com")).Id;
             string developerId = (await userManager.FindByEmailAsync("Kit@mailinator.com")).Id;
             string submitterId = (await userManager.FindByEmailAsync("John@mailinator.com")).Id;
-            int project1Id = (await context.Projects.FirstOrDefaultAsync(predicate => predicate.Name == "Blog Project")).Id;
-            int project2Id = (await context.Projects.FirstOrDefaultAsync(predicate => predicate.Name == "Status Tracker Project")).Id;
-            int project3Id = (await context.Projects.FirstOrDefaultAsync(predicate => predicate.Name == "Financial Portal Project")).Id;
+            int project1Id = (await context.Projects.FirstOrDefaultAsync(predicate => predicate.Name == "Blog App")).Id;
+            int project2Id = (await context.Projects.FirstOrDefaultAsync(predicate => predicate.Name == "Status Tracker")).Id;
+            int project3Id = (await context.Projects.FirstOrDefaultAsync(predicate => predicate.Name == "Financial Portal")).Id;
             int project4Id = (await context.Projects.FirstOrDefaultAsync(predicate => predicate.Name == "Address Book App")).Id;
 
             ProjectUser projectUser = new ProjectUser
@@ -1171,9 +1171,9 @@ namespace StatusTracker.Data
         {
             string developerId = (await userManager.FindByEmailAsync("Denis@mailinator.com")).Id;
             string submitterId = (await userManager.FindByEmailAsync("Kit@mailinator.com")).Id;
-            int project1Id = (await context.Projects.FirstOrDefaultAsync(p => p.Name == "Blog Project")).Id;
-            int project2Id = (await context.Projects.FirstOrDefaultAsync(p => p.Name == "Status Tracker Project")).Id;
-            int project3Id = (await context.Projects.FirstOrDefaultAsync(p => p.Name == "Financial Portal Project")).Id;
+            int project1Id = (await context.Projects.FirstOrDefaultAsync(p => p.Name == "Blog App")).Id;
+            int project2Id = (await context.Projects.FirstOrDefaultAsync(p => p.Name == "Status Tracker")).Id;
+            int project3Id = (await context.Projects.FirstOrDefaultAsync(p => p.Name == "Financial Portal")).Id;
             int project4Id = (await context.Projects.FirstOrDefaultAsync(p => p.Name == "Address Book App")).Id;
             int statusId = (await context.TicketStatuses.FirstOrDefaultAsync(ts => ts.Name == "Open")).Id;
             int typeId = (await context.TicketTypes.FirstOrDefaultAsync(tt => tt.Name == "UI")).Id;
@@ -1181,8 +1181,8 @@ namespace StatusTracker.Data
 
             Ticket ticket = new Ticket
             {
-                Title = "Need more blog posts",
-                Description = "Our users have requested you present more content.",
+                Title = "Need blog posts",
+                Description = "Users want more content",
                 Created = DateTimeOffset.Now.AddDays(-7),
                 Updated = DateTimeOffset.Now.AddHours(-30),
                 ProjectId = project1Id,
@@ -1241,7 +1241,7 @@ namespace StatusTracker.Data
 
             ticket = new Ticket
             {
-                Title = "New algo for financial portal",
+                Title = "New algorithm",
                 Description = "Need to establish the calculations.",
                 Created = DateTimeOffset.Now.AddDays(-7),
                 Updated = DateTimeOffset.Now.AddHours(-30),
@@ -1254,7 +1254,7 @@ namespace StatusTracker.Data
             };
             try
             {
-                var newTicket = await context.Tickets.FirstOrDefaultAsync(t => t.Title == "New algo for financial portal");
+                var newTicket = await context.Tickets.FirstOrDefaultAsync(t => t.Title == "Algo for transfers");
                 if (newTicket == null)
                 {
                     await context.Tickets.AddAsync(ticket);
@@ -1302,7 +1302,7 @@ namespace StatusTracker.Data
             ticket = new Ticket
             {
                 Title = "Runtime Issues",
-                Description = "It's not completing the compilation.",
+                Description = "Not completing the compilation.",
                 Created = DateTimeOffset.Now.AddDays(-7),
                 Updated = DateTimeOffset.Now.AddHours(-30),
                 ProjectId = project2Id,
@@ -1332,7 +1332,7 @@ namespace StatusTracker.Data
             ticket = new Ticket
             {
                 Title = "Backend",
-                Description = "Missing functionality requested by the customer",
+                Description = "Missing functionality",
                 Created = DateTimeOffset.Now.AddDays(-5),
                 Updated = DateTimeOffset.Now.AddHours(-15),
                 ProjectId = project3Id,

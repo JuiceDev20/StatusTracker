@@ -253,7 +253,7 @@ namespace StatusTracker.Controllers
 
                     try
                     {
-                        ticket.Updated = DateTimeOffset.Now;
+                        ticket.Updated = DateTime.Now;
                         _context.Update(ticket);
                         await _context.SaveChangesAsync();
 

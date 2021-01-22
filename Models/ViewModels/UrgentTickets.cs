@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace StatusTracker.Models.ViewModels
 {
@@ -12,6 +9,8 @@ namespace StatusTracker.Models.ViewModels
         public TicketPriority TicketPriority { get; set; }
 
         public TicketStatus TicketStatus { get; set; }
+
+        public TicketType TicketType { get; set; }
 
         public ICollection<Ticket> Tickets { get; set; }
 

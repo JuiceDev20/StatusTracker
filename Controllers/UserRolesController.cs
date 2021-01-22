@@ -65,10 +65,8 @@ namespace StatusTracker.Controllers
                     await _rolesService.AddUserToRole(user, role);
                 }
             }
-                    return RedirectToAction("ManageUserRoles");  //Success
+             return RedirectToAction("ManageUserRoles");  //Success
 
-
-            //return RedirectToAction("ManageUserRoles"); //Failure
 
         }
 

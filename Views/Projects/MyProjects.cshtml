@@ -24,15 +24,9 @@
                 <table class="table">
                     <thead class="thead-purple">
                         <tr>
-                            <th>
-                                User
-                            </th>
-                            <th>
-                                Project Name
-                            </th>
-                            <th>
-                                Action
-                            </th>
+                            <th>User</th>
+                            <th>Project Name</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,7 +36,6 @@
                                 <td>
                                     @Model.User.FullName
                                 </td>
-
                                 <td>
                                     @item.Name
                                 </td>
@@ -54,7 +47,7 @@
                                         <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                                     }
                                     <span>
-                                        <a class="btn btn-outline-primary" asp-controller="Tickets" asp-action="Create" asp-route-id="@item.Id">Create Ticket</a>
+                                        <a class="btn btn-outline-primary" asp-controller="Tickets" asp-action="Create" asp-route-id="@item.Id">New Ticket</a>
                                     </span>
                                 </td>
                             </tr>
@@ -68,9 +61,11 @@
 
         @if (User.IsInRole("Admin") || User.IsInRole("ProjectManager"))
         {
-            <p>
-                <a class="btn btn-outline-primary" asp-action="Create">Create New</a>
-            </p>
+    <p>
+        <a class="btn btn-outline-primary" asp-action="Create">Create New</a>
+        <a class="btn btn-outline-info" asp-controller="Home" asp-action="Index">Dashboard 1</a>
+        <a class="btn btn-outline-info" asp-controller="Home" asp-action="Dashboard">Dashboard 2</a>
+    </p>
         }
     </div>
 </div>
