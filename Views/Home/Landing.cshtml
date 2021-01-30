@@ -86,54 +86,47 @@
 
     <!--------------->
     <!-- The Modal -->
-    <!--------------->
+    <!---------------> 
     <div class="modal" id="myModal">
         <div class="modal-dialog-centered modal-dialog modal-xl">
             <div class="modal-content">
-                <!------------------>
                 <!-- Modal Header -->
-                <!------------------>
-                <div class="modal-header justify-content-center bg-secondary">
-                    <h4 class="modal-title text-white">About Status Tracker</h4>
+                <div class="modal-header justify-content-center">
+                    <h4 class="modal-title text-warning">~ Status Tracker ~</h4>
                 </div>
-                <!---------------->
                 <!-- Modal body -->
-                <!---------------->
-                <div class="modal-body bg-light justify-content-center">
-                    <pre><strong>
-                        Status Tracker is a Web-based software application designed to mirror any of a wide variety of bug tracking
-                        software systems in use by corporations throughout world. If a company develops software, whether for in-house
-                        use or distribution, it uses a bug tracking system to maintain an accurate record of the software development process
-                        on a per-project basis.
-
-                        Status Tracker is built as a Web-based service application using the Microsoft Visual Studio 2019, MVC architecture,
-                        MS Code-First database schema using Entity Framework with user- and role-level security, and web pages built with HTML4,
-                        Twitter Bootstrap, and model binding with Razor.
-
-                        Status Tracker is commercial-grade and performs to professional standards, comparable to similar commercial applications.
-                        It allows users to sort, filter, search, manage users, and assign tasks.
-
-                        Status Tracker is fully secured using Authentication and Authorization through Microsoft Entity Framework to prevent
-                        unauthorized persons from accessing user profile and account information. </strong>
+                <div class="modal-body bg-dark">
+                    <pre class="text-warning" style="font-size:medium">
+             Status Tracker is a Web-based software application designed to track and manage trouble tickets.
+             If a company develops products or services, whether for in-house use or distribution, a "bug" 
+             tracking system can keep an accurate record of the development process for each project basis.
+             
+             Status Tracker is built as a Web-based service application using the Microsoft Visual Studio 2019,
+             MVC architecture, MS Code-First database schema using Entity Framework with user and role-level 
+             security, and web pages built with HTML4, Twitter Bootstrap, and model binding with Razor.
+             
+             Status Tracker is a commercial-grade application that meets professional standards, allows users to
+             tract tickets from origination to close. Sort, filter, or search, by priority, status or type, 
+             and manage users, and assign tasks.
+             
+             Status Tracker is fully secured using Authentication and Authorization through Microsoft Entity 
+             Framework to prevent unauthorized persons from accessing user profile and account information.
                     </pre>
                 </div>
-                <!------------------>
                 <!-- Modal footer -->
-                <!------------------>
-                <div class="modal-footer bg-secondary">
+                <div class="modal-footer">
                     <button type="button" class="btn btn-outline-warning" data-dismiss="modal">Close</button>
                 </div>
-
             </div>
         </div>
-    </div>
+    </div>   
 
     <footer class="border-top footer w-100 fixed-bottom text-center">
-        <div class="container">
+        <div class="container text-warning">
             &copy; 2020 ~ Status Tracker ~ Created by: O J OLMO - Full Stack Developer
         </div>
     </footer>
     <script src="~/js/libscripts.bundle.js"></script>
-
+    
 </body>
 </html>

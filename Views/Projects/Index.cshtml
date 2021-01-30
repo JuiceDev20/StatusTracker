@@ -64,11 +64,13 @@
     </div>
 </div>
 
+<a class="btn btn-outline-info" asp-controller="Home" asp-action="Index">Back to Dashboard</a>
+
 @if (User.IsInRole("Admin") || User.IsInRole("ProjectManager"))
 {
 
     <a class="btn btn-outline-primary" asp-action="Create">Create New</a>
-
+    <a class="btn btn-outline-info" asp-controller="Home" asp-action="Dashboard">Back to Dashboard 2</a>
 }
 
-<a class="btn btn-outline-info" asp-controller="Home" asp-action="Index">Back to Dashboard</a>
+

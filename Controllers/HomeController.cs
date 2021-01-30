@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using StatusTracker.Models;
-using System;
 using System.Diagnostics;
 
 namespace StatusTracker.Controllers

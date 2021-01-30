@@ -163,10 +163,10 @@ namespace StatusTracker.Data
             #region DemoProjectManager Seed
             defaultUser = new STUser
             {
-                UserName = "Eli@mailinator.com",
-                Email = "Eli@mailinator.com",
-                FirstName = "Eli",
-                LastName = "Jones",
+                UserName = "Erin@mailinator.com",
+                Email = "Erin@mailinator.com",
+                FirstName = "Erin",
+                LastName = "Crommet",
                 EmailConfirmed = true
             };
             try
@@ -389,10 +389,10 @@ namespace StatusTracker.Data
             #region Submitter3 Seed
             defaultUser = new STUser
             {
-                UserName = "Tere@mailinator.com",
-                Email = "Tere@mailinator.com",
-                FirstName = "Tere",
-                LastName = "Olmo",
+                UserName = "john@mailinator.com",
+                Email = "john@mailinator.com",
+                FirstName = "John",
+                LastName = "Green",
                 EmailConfirmed = true
             };
             try
@@ -407,7 +407,7 @@ namespace StatusTracker.Data
             catch (Exception ex)
             {
                 Debug.WriteLine("************  ERROR *************");
-                Debug.WriteLine("Error Seeding Default Admin User.");
+                Debug.WriteLine("Error Seeding Default Submitter User.");
                 Debug.WriteLine(ex.Message);
                 Debug.WriteLine("*********************************");
                 throw;
@@ -417,10 +417,10 @@ namespace StatusTracker.Data
             #region Demo Submitter Seed
             defaultUser = new STUser
             {
-                UserName = "John@mailinator.com",
-                Email = "John@mailinator.com",
-                FirstName = "John",
-                LastName = "Green",
+                UserName = "Tere@mailinator.com",
+                Email = "Tere@mailinator.com",
+                FirstName = "Tere",
+                LastName = "Olmo",
                 EmailConfirmed = true
             };
             try
@@ -779,9 +779,9 @@ namespace StatusTracker.Data
         private static async Task SeedProjectUsersAsync(ApplicationDbContext context, UserManager<STUser> userManager)
         {
             string adminId = (await userManager.FindByEmailAsync("Denis@mailinator.com")).Id;
-            string projectManagerId = (await userManager.FindByEmailAsync("Eli@mailinator.com")).Id;
+            string projectManagerId = (await userManager.FindByEmailAsync("Erin@mailinator.com")).Id;
             string developerId = (await userManager.FindByEmailAsync("Kit@mailinator.com")).Id;
-            string submitterId = (await userManager.FindByEmailAsync("John@mailinator.com")).Id;
+            string submitterId = (await userManager.FindByEmailAsync("Tere@mailinator.com")).Id;
             int project1Id = (await context.Projects.FirstOrDefaultAsync(predicate => predicate.Name == "Blog App")).Id;
             int project2Id = (await context.Projects.FirstOrDefaultAsync(predicate => predicate.Name == "Status Tracker")).Id;
             int project3Id = (await context.Projects.FirstOrDefaultAsync(predicate => predicate.Name == "Financial Portal")).Id;
@@ -1170,7 +1170,7 @@ namespace StatusTracker.Data
         private static async Task SeedTicketsAsync(ApplicationDbContext context, UserManager<STUser> userManager)
         {
             string developerId = (await userManager.FindByEmailAsync("Denis@mailinator.com")).Id;
-            string submitterId = (await userManager.FindByEmailAsync("Kit@mailinator.com")).Id;
+            string submitterId = (await userManager.FindByEmailAsync("Tere@mailinator.com")).Id;
             int project1Id = (await context.Projects.FirstOrDefaultAsync(p => p.Name == "Blog App")).Id;
             int project2Id = (await context.Projects.FirstOrDefaultAsync(p => p.Name == "Status Tracker")).Id;
             int project3Id = (await context.Projects.FirstOrDefaultAsync(p => p.Name == "Financial Portal")).Id;
@@ -1242,7 +1242,7 @@ namespace StatusTracker.Data
             ticket = new Ticket
             {
                 Title = "New algorithm",
-                Description = "Need to establish the calculations.",
+                Description = "Establish new calculations.",
                 Created = DateTimeOffset.Now.AddDays(-7),
                 Updated = DateTimeOffset.Now.AddHours(-30),
                 ProjectId = project3Id,

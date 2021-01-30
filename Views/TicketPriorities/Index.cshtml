@@ -17,7 +17,7 @@
                     <thead class="thead-purple">
                         <tr>
                             <th>Name</th>
-                            <th></th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -49,7 +49,7 @@
 
 @if (User.IsInRole("Admin") || User.IsInRole("ProjectManager"))
 {
-    <p>
+    
         <a class="btn btn-outline-primary" asp-action="Create">Create New</a>
-    </p>
+    
 }

@@ -48,7 +48,7 @@ $(function() {
     // notification popup
     toastr.options.closeButton = true;
     toastr.options.positionClass = 'toast-bottom-right';    
-    toastr['success']('Hello and welcome to Status Tracker, a unique admin Template.');
+    toastr['success']('Hello and welcome to Status Tracker, a unique "Bug" tracking app.');
 });
 
 // top products
@@ -137,3 +137,50 @@ options = {
     ]
 };
 new Chartist.Line('#workSchedule', dataMultiple, options);
+
+// multiple chart 2
+var dataMultiple = {
+    labels: ['2/1', '2/8', '2/15', '2/22', '3/1', '3/8', '3/15', '3/22', '3/29', '4/5', '4/12', '4/19', '4/26',],
+    series: [{
+        name: 'Dive Computer',
+        data: [30, 30, 30, 30, 30, 20, 8, 0, 0, 0, 0, 0, 0],
+    },{
+        name: 'Fitness App',
+        data: [0, 0, 2, 2, 20, 20, 20, 20, 20, 20, 0, 2, 0],
+    },{
+        name: 'Kanban Board App',
+        data: [10, 10, 10, 10, 10, 30, 30, 40, 20, 20, 10, 0, 2],
+    },{
+        name: 'Invoicing App',
+        data: [0, 0, 0, 0, 0, 10, 10, 10, 10, 0, 2, 0, 2],
+    },]
+};
+options = {
+    lineSmooth: true,
+    height: "310px",
+    low: 0,
+    high: 'auto',
+    series: {
+        'Design': {
+            showPoint: true,
+        },
+    },
+
+    axisY: {
+        labelInterpolationFnc: function (value) {
+            return (value);
+        }
+    },
+
+    options: {
+        responsive: true,
+        legend: true
+    },
+
+    plugins: [
+        Chartist.plugins.legend({
+            legendNames: ['Dive Computer', 'Fitness App', 'Kanban Board App', 'Invoicing App']
+        })
+    ]
+};
+new Chartist.Line('#FutureSchedule', dataMultiple, options);
