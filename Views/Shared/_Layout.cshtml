@@ -74,16 +74,15 @@
                     <!--------------------------------------------------------------->
                     <!-- Top Navbar Right-Corner (Calendar, Chat, Email) Navigation-->
                     <!--------------------------------------------------------------->
-
-                    <div id="navbar-menu">
-                        <ul class="nav navbar-nav">
-                            <li><a asp-controller="Home" asp-action="Index" class="icon-menu d-none d-sm-block"><i class="icon-home"></i></a></li>
-                            <li><a asp-controller="Home" asp-action="Dashboard" class="icon-menu d-none d-sm-block"><i class="icon-anchor"></i></a></li>
-                            <li><a asp-controller="Projects" asp-action="Index" class="icon-menu d-none d-sm-block"><i class="icon-grid"></i></a></li>
-                            <li><a asp-controller="Tickets" asp-action="Index" class="icon-menu d-none d-sm-block"><i class="icon-list"></i></a></li>
-
-                        </ul>
-                    </div>
+                    @if (User.IsInRole("Admin") || User.IsInRole("ProjectManager"))
+                    {
+                        <div id="navbar-menu">
+                            <ul class="nav navbar-nav">
+                                <li><a asp-controller="Home" asp-action="Index" class="icon-menu d-none d-sm-block"><i class="icon-home"></i></a></li>
+                                <li><a asp-controller="Home" asp-action="Dashboard" class="icon-menu d-none d-sm-block"><i class="icon-anchor"></i></a></li>
+                            </ul>
+                        </div>
+                    }
 
                 </div>
             </div>
@@ -112,8 +111,7 @@
                 <!-------------->
                 <ul class="nav nav-tabs">
                     <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#hr_menu">Overview</a></li>
-                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#project_menu">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#setting">Tickets</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#project_menu">My Station</a></li>
 
                 </ul>
                 <!------------------>
@@ -130,28 +128,14 @@
                         </nav>
                     </div>
                     <!----------------->
-                    <!-- Project Tab -->
+                    <!-- My Station Tab -->
                     <!----------------->
                     <div class="tab-pane animated fadeIn table-active" id="project_menu">
                         <nav class="sidebar-nav">
                             <ul class="main-menu metismenu">
-                                <li><a asp-controller="Projects" asp-action="MyProjects"><i class="icon-lock"></i>My Projects</a></li>
-                                <li><a asp-controller="Projects" asp-action="Create"><i class="icon-bulb"></i>Create</a></li>
-                                <li><a asp-controller="UserRoles" asp-action="ManageUserRoles"><i class="icon-users"></i>User Roles</a></li>
+                                <li><a asp-controller="Projects" asp-action="MyProjects"><i class="icon-map"></i>My Projects</a></li>
+                                <li><a asp-controller="Tickets" asp-action="MyTickets"><i class="icon-tag"></i>My Tickets</a></li>
 
-                            </ul>
-                        </nav>
-                    </div>
-                    <!----------------->
-                    <!-- Ticket Tab -->
-                    <!----------------->
-                    <div class="tab-pane animated fadeIn table-active" id="setting">
-                        <nav class="sidebar-nav">
-                            <ul class="main-menu metismenu">
-                                <li><a asp-controller="Tickets" asp-action="MyTickets"><i class="icon-lock"></i>My Tickets</a></li>
-                                <li><a asp-controller="TicketAttachments" asp-action="Index"><i class="icon-cloud-upload"></i>Ticket Attachments</a></li>
-                                <li><a asp-controller="TicketComments" asp-action="Index"><i class="icon-pencil"></i>Ticket Comments</a></li>
-                                <li><a asp-controller="TicketHistories" asp-action="Index"><i class="icon-calendar"></i>Ticket Histories</a></li>
                             </ul>
                         </nav>
                     </div>

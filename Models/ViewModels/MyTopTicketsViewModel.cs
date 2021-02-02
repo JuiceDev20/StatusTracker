@@ -2,7 +2,7 @@
 
 namespace StatusTracker.Models.ViewModels
 {
-    public class UrgentTickets
+    public class MyTopTicketsViewModel
     {
         public Ticket Ticket { get; set; }
 

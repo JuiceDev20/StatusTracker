@@ -101,6 +101,51 @@ namespace StatusTracker.Controllers
             return View(model);
         }
 
+        public async Task<IActionResult> MyTopTickets()
+        {
+            var userId = _userManager.GetUserId(User); // Get the currently logged in user.
+            var roleList = await _sTRolesService.ListUserRoles(_context.Users.Find(userId));
+            var role = roleList.FirstOrDefault();
+            List<Ticket> model;
+            switch (role)
+            {
+                case "Admin":
+                    model = _context.Tickets.Where(t => t.TicketPriority.Name == "Urgent")
+                        .Include(t => t.OwnerUser)
+                        .Include(t => t.TicketStatus)
+                        .Include(t => t.TicketType)
+                        .Include(t => t.Project)
+                        .Include(t => t.DeveloperUser)
+                        .ToList();
+                    break;
+                //   Snippet to get ticket for project manager -special case for roles
+                case "ProjectManager":
+                    var projectIds = new List<int>();
+                    model = new List<Ticket>();
+                    var userProjects = _context.ProjectUsers.Where(pu => pu.UserId == userId).ToList();
+                    foreach (var record in userProjects)
+                    {
+                        projectIds.Add(_context.Projects.Find(record.ProjectId).Id);
+                    }
+                    foreach (var id in projectIds)
+                    {
+                        var tickets = _context.Tickets.Where(t => t.ProjectId == id && t.TicketPriority.Name == "Urgent")
+                            .Include(t => t.OwnerUser)
+                            .Include(t => t.TicketPriority)
+                            .Include(t => t.TicketStatus)
+                            .Include(t => t.TicketType)
+                            .Include(t => t.Project)
+                            .Include(t => t.DeveloperUser)
+                            .ToList();
+                        model.AddRange(tickets);
+                    }
+                    break;
+                default:
+                    return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)

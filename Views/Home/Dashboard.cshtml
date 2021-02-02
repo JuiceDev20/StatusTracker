@@ -29,23 +29,31 @@
         <div class="col-12">
             <div class="card" style="height:450px">
                 <h3 class="card-title text-primary ml-4">Master Console</h3>
+                <!-- Admin Buttons -->
                 <div class="body">
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-3">
                             <div class="card text-center">
                                 <div class="body bg-light">
-                                    <a asp-controller="Tickets" asp-action="MyTickets" class="btn btn-primary"><i class="icon-tag"></i> Manage Tickets</a>
+                                    <a class="btn btn-danger" asp-controller="Tickets" asp-action="MyTopTickets"><i class="icon-fire"></i> Urgent Tickets</a>                           
                                 </div>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-3">
                             <div class="card text-center">
                                 <div class="body bg-light">
                                     <a asp-controller="Projects" asp-action="MyProjects" class="btn btn-primary"><i class="icon-bulb"></i> Manage Projects</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-3">
+                            <div class="card text-center">
+                                <div class="body bg-light">
+                                    <a asp-controller="Tickets" asp-action="MyTickets" class="btn btn-primary"><i class="icon-tag"></i> Manage Tickets</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
                             <div class="card text-center">
                                 <div class="body bg-light">
                                     <a asp-controller="UserRoles" asp-action="ManageUserRoles" class="btn btn-primary"><i class="icon-users"></i> Manage Roles</a>
@@ -60,6 +68,13 @@
                         <div class="col-4">
                             <div class="card text-center">
                                 <div class="body bg-light">
+                                    <a asp-controller="TicketHistories" asp-action="Index" class="btn btn-primary"><i class="icon-book-open"></i> Ticket Histories</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card text-center">
+                                <div class="body bg-light">
                                     <a class="btn btn-primary" data-toggle="modal" data-target="#ProjectDetails"><i class="icon-calculator"></i> Project Budgets</a>
                                 </div>
                             </div>
@@ -68,13 +83,6 @@
                             <div class="card text-center">
                                 <div class="body bg-light">
                                     <a class="btn btn-primary" data-toggle="modal" data-target="#TeamPerf"><i class="icon-badge"></i> Team Performance</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="card text-center">
-                                <div class="body bg-light">
-                                    <a asp-controller="TicketHistories" asp-action="Index" class="btn btn-primary"><i class="icon-book-open"></i> Histories</a>
                                 </div>
                             </div>
                         </div>
@@ -115,7 +123,7 @@
                 </div>
             </div>
         </div>
-
+        <!-- asp-controller="Tickets" asp-action="MyTopTickets"  -->
     </div>
 
     <!---------------->
@@ -127,7 +135,7 @@
                 <div class="card-body">
                     <h5 class="card-title text-primary">2021 Q1 Schedule</h5>
                 </div>
-                <div class="body" >
+                <div class="body">
                     <div id="FutureSchedule" class="ct-chart"></div>
                 </div>
             </div>
@@ -141,6 +149,187 @@
 <!--------------------------->
 
 <div class="row clearfix">
+
+    <!----------------------->
+    <!-- My Urgent Tickets -->
+    <!----------------------->
+    <!----------------------------->
+    <!-- Project $ Details Modal -->
+    <!----------------------------->
+    <div class="modal" id="ProjectDetails">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title text-primary">Project Budget Details</h4>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="row clearfix">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="body">
+                                    <div class="table-responsive">
+                                        <table class="table m-b-0 table-hover">
+                                            <thead class="thead-purple">
+                                                <tr>
+                                                    <th>Application</th>
+                                                    <th>Team Lead</th>
+                                                    <th>Wages</th>
+                                                    <th>Overhead</th>
+                                                    <th>Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <h6 class="text-info">Status Tracker</h6>
+                                                        <span>Turquoise Team</span>
+                                                    </td>
+                                                    <td>
+                                                        <ul class="list-unstyled team-info">
+                                                            <li><img src="~/assets/Images/avatar2.jpg" alt="Avatar"></li>
+                                                        </ul>
+                                                    </td>
+                                                    <td>8,400</td>
+                                                    <td>$3,360</td>
+                                                    <td><strong>$36,960</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h6 class="text-danger">Pro Blog</h6>
+                                                        <span>Ruby Team</span>
+                                                    </td>
+                                                    <td>
+                                                        <ul class="list-unstyled team-info">
+                                                            <li><img src="~/assets/Images/avatar3.jpg" alt="Avatar" /></li>
+                                                        </ul>
+                                                    </td>
+                                                    <td>7,800</td>
+                                                    <td>$1,560</td>
+                                                    <td><strong>$17,160</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h6 class="text-warning">Address Book</h6>
+                                                        <span>Garnet Team</span>
+                                                    </td>
+                                                    <td>
+                                                        <ul class="list-unstyled team-info">
+                                                            <li><img src="~/assets/Images/avatar7.jpg" alt="Avatar"></li>
+                                                        </ul>
+                                                    </td>
+                                                    <td>7,800</td>
+                                                    <td>$780</td>
+                                                    <td><strong>$8,580</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h6 class="text-success">Money Tracker</h6>
+                                                        <span>Emerald Team</span>
+                                                    </td>
+                                                    <td>
+                                                        <ul class="list-unstyled team-info">
+                                                            <li><img src="~/assets/Images/avatar9.jpg" alt="Avatar"></li>
+                                                        </ul>
+                                                    </td>
+                                                    <td>7,800</td>
+                                                    <td>$1,560</td>
+                                                    <td><strong>$17,160</strong></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!---------------------------->
+    <!-- Team Performance Modal -->
+    <!---------------------------->
+    <div class="modal" id="TeamPerf">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title text-primary">Team Performance</h4>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover m-b-0">
+                            <thead class="thead-purple">
+                                <tr>
+                                    <th>Avatar</th>
+                                    <th>Name</th>
+                                    <th>Team</th>
+                                    <th>Performance</th>
+                                    <th>Work Location</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><img src="~/assets/Images/avatar9.jpg" class="rounded-circle width35" alt=""></td>
+                                    <td>Orlando Olmo</td>
+                                    <td><span>Emerald</span></td>
+                                    <td><span class="badge badge-success">Good</span></td>
+                                    <td class="text-primary">Local</td>
+                                </tr>
+                                <tr>
+                                    <td><img src="~/assets/Images/avatar2.jpg" class="rounded-circle width35" alt=""></td>
+                                    <td>Erin Crommett</td>
+                                    <td><span>Sakura</span></td>
+                                    <td><span class="badge badge-primary">Excellent</span></td>
+                                    <td class="text-danger">Remote</td>
+                                </tr>
+                                <tr>
+                                    <td><img src="~/assets/Images/avatar7.jpg" class="rounded-circle width35" alt=""></td>
+                                    <td>Tere Olmo</td>
+                                    <td><span>Garnet</span></td>
+                                    <td><span class="badge badge-primary">Excellent</span></td>
+                                    <td class="text-primary">Local</td>
+                                </tr>
+                                <tr>
+                                    <td><img src="~/assets/Images/avatar2.jpg" class="rounded-circle width35" alt=""></td>
+                                    <td>Beth Olmo</td>
+                                    <td><span>Turquoise</span></td>
+                                    <td><span class="badge badge-primary">Excellent</span></td>
+                                    <td class="text-primary">Local</td>
+                                </tr>
+                                <tr>
+                                    <td><img src="~/assets/Images/avatar4.jpg" class="rounded-circle width35" alt=""></td>
+                                    <td>Lucy Black</td>
+                                    <td><span>Hibiscus</span></td>
+                                    <td><span class="badge badge-success">Good</span></td>
+                                    <td class="text-danger">Remote</td>
+                                </tr>
+                                <tr>
+                                    <td><img src="~/assets/Images/avatar3.jpg" class="rounded-circle width35" alt=""></td>
+                                    <td>Cindy Kane</td>
+                                    <td><span>Ruby</span></td>
+                                    <td><span class="badge badge-warning">Average</span></td>
+                                    <td class="text-primary">Local</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-------------------->
     <!-- Status Tracker -->
@@ -326,206 +515,6 @@
         </div>
     </div>
 
-    <!-------------------------->
-    <!-- Project $ Details Modal -->
-    <!-------------------------->
-    <div class="modal" id="ProjectDetails">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title text-primary">Project Budget Details</h4>
-                </div>
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <div class="row clearfix">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="body">
-                                    <div class="table-responsive">
-                                        <table class="table m-b-0 table-hover">
-                                            <thead class="thead-purple">
-                                                <tr>
-                                                    <th>Application</th>
-                                                    <th>Team Lead</th>
-                                                    <th>Wages</th>
-                                                    <th>Overhead</th>
-                                                    <th>Total</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <h6 class="text-info">Status Tracker</h6>
-                                                        <span>Turquoise Team</span>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-unstyled team-info">
-                                                            <li><img src="~/assets/Images/avatar2.jpg" alt="Avatar"></li>
-                                                        </ul>
-                                                    </td>
-                                                    <td>8,400</td>
-                                                    <td>$3,360</td>
-                                                    <td><strong>$36,960</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <h6 class="text-danger">Pro Blog</h6>
-                                                        <span>Ruby Team</span>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-unstyled team-info">
-                                                            <li><img src="~/assets/Images/avatar3.jpg" alt="Avatar" /></li>
-                                                        </ul>
-                                                    </td>
-                                                    <td>7,800</td>
-                                                    <td>$1,560</td>
-                                                    <td><strong>$17,160</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <h6 class="text-warning">Address Book</h6>
-                                                        <span>Garnet Team</span>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-unstyled team-info">
-                                                            <li><img src="~/assets/Images/avatar7.jpg" alt="Avatar"></li>
-                                                        </ul>
-                                                    </td>
-                                                    <td>7,800</td>
-                                                    <td>$780</td>
-                                                    <td><strong>$8,580</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <h6 class="text-success">Money Tracker</h6>
-                                                        <span>Emerald Team</span>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-unstyled team-info">
-                                                            <li><img src="~/assets/Images/avatar9.jpg" alt="Avatar"></li>
-                                                        </ul>
-                                                    </td>
-                                                    <td>7,800</td>
-                                                    <td>$1,560</td>
-                                                    <td><strong>$17,160</strong></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!---------------------------->
-    <!-- Team Performance Modal -->
-    <!---------------------------->
-    <div class="modal" id="TeamPerf">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title text-primary">Team Performance</h4>
-                </div>
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <div class="table-responsive">
-                        <table class="table table-hover m-b-0">
-                            <thead class="thead-purple">
-                                <tr>
-                                    <th>Avatar</th>
-                                    <th>Name</th>
-                                    <th>Team</th>
-                                    <th>Performance</th>
-                                    <th>Work Location</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><img src="~/assets/Images/avatar9.jpg" class="rounded-circle width35" alt=""></td>
-                                    <td>Orlando Olmo</td>
-                                    <td><span>Emerald</span></td>
-                                    <td><span class="badge badge-success">Good</span></td>
-                                    <td class="text-primary">Local</td>
-                                </tr>
-                                <tr>
-                                    <td><img src="~/assets/Images/avatar2.jpg" class="rounded-circle width35" alt=""></td>
-                                    <td>Erin Crommett</td>
-                                    <td><span>Sakura</span></td>
-                                    <td><span class="badge badge-primary">Excellent</span></td>
-                                    <td class="text-danger">Remote</td>
-                                </tr>
-                                <tr>
-                                    <td><img src="~/assets/Images/avatar7.jpg" class="rounded-circle width35" alt=""></td>
-                                    <td>Tere Olmo</td>
-                                    <td><span>Garnet</span></td>
-                                    <td><span class="badge badge-primary">Excellent</span></td>
-                                    <td class="text-primary">Local</td>
-                                </tr>
-                                <tr>
-                                    <td><img src="~/assets/Images/avatar2.jpg" class="rounded-circle width35" alt=""></td>
-                                    <td>Beth Olmo</td>
-                                    <td><span>Turquoise</span></td>
-                                    <td><span class="badge badge-primary">Excellent</span></td>
-                                    <td class="text-primary">Local</td>
-                                </tr>
-                                <tr>
-                                    <td><img src="~/assets/Images/avatar4.jpg" class="rounded-circle width35" alt=""></td>
-                                    <td>Lucy Black</td>
-                                    <td><span>Hibiscus</span></td>
-                                    <td><span class="badge badge-success">Good</span></td>
-                                    <td class="text-danger">Remote</td>
-                                </tr>
-                                <tr>
-                                    <td><img src="~/assets/Images/avatar3.jpg" class="rounded-circle width35" alt=""></td>
-                                    <td>Cindy Kane</td>
-                                    <td><span>Ruby</span></td>
-                                    <td><span class="badge badge-warning">Average</span></td>
-                                    <td class="text-primary">Local</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-------------------->
-    <!-- Open -->
-    <!-------------------->
-    <div class="modal" id="">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header bg-danger">
-                    <h4 class="modal-title text-light"> </h4>
-                </div>
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <div class="row">
-                      
-                    </div>
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 </div>
