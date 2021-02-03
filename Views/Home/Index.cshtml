@@ -1,23 +1,15 @@
-﻿@using Microsoft.AspNetCore.Identity
-@using StatusTracker.Services
+﻿@using Microsoft.AspNetCore.Identity;
+@using StatusTracker.Services;
+@using StatusTracker.Models.ViewModels;
 
 @inject UserManager<STUser> UserManager
 @inject ISTAccessService AccessService
 @inject ISTRolesService RolesService
 
+@model StatusTracker.Models.ViewModels.MyTopTicketsViewModel
 
 <div class="container-fluid">
-    <div class="block-header">
-        <div class="row">
-            <div class="col-lg-6 col-md-8 col-sm-12">
-                <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a>Nav Panel</h2>
-                <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index"><i class="icon-home"></i></a></li>
-                    <li class="breadcrumb-item active">Home Dashboard</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <br />
 
 </div>
 <!------------------>
@@ -63,8 +55,6 @@
 
 </div>
 
-
-
 <!---------------->
 <!-- Line Chart -->
 <!---------------->
@@ -74,38 +64,239 @@
             <div class="card-body">
                 <h4 class="card-title text-primary">Project Work Schedule</h4>
             </div>
-            <div class="body" style="height: 400px">
+            <div class="body" style="height: 410px">
                 <div id="workSchedule" class="ct-chart"></div>
             </div>
         </div>
     </div>
-
-    <!----------------->
-    <!-- Donot Chart -->
-    <!----------------->
+    <!---------------------------->
+    <!-- Completed Apps Buttons -->
+    <!---------------------------->
     <div class="col-2">
-        <div class="card justify-content-center">
-            <div class="card-body">
-                <h4 class="card-title text-primary">Staff</h4>
-                <div>
-                    <br />
-                    <h6 class="justify-content-center">Local</h6>
-                    <input type="text" class="knob2" data-linecap="round" value="67" data-width="125" data-height="125" data-thickness="0.15" data-fgColor="#49a9e5" readonly>
-                    <hr>
-                    <br>
-                    <h6 class="justify-content-center">Remote</h6>
-                    <input type="text" class="knob2" data-linecap="round" value="33" data-width="125" data-height="125" data-thickness="0.15" data-fgColor="#b880e1" readonly>
+        <div class="card text-center">
+            <br />
+            <h4 class="card-title text-primary">Completed Apps</h4>
+            <div class="card">
+                <div class="body bg-light">
+                    <a class="btn btn-info" data-toggle="modal" data-target="#myModal1"><i class="icon-magnifier"></i> Status Tracker</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="body bg-light">
+                    <a class="btn btn-danger" data-toggle="modal" data-target="#myModal2"><i class="icon-pencil"></i> Dragon Blog</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="body bg-light">
+                    <a class="btn btn-warning" data-toggle="modal" data-target="#myModal3"><i class="icon-notebook"></i> Address Book</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="body bg-light">
+                    <a class="btn btn-success" data-toggle="modal" data-target="#myModal4"><i class="icon-bar-chart"></i> Money Tracker</a>
+                </div>
+            </div>
+            <br />
+        </div>
+    </div>
+
+</div>
+
+<!--------------------------->
+<!-- Completed Apps Modals -->
+<!--------------------------->
+
+<div class="row clearfix">
+
+    <!-------------------->
+    <!-- Status Tracker -->
+    <!-------------------->
+    <div class="modal" id="myModal1">
+        <div class="modal-dialog-centered modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center bg-info">
+                    <h3 class="modal-title text-white">Status Tracker</h3>
+                </div>
+                <div class="modal-body bg-light justify-content-center">
+                    <div class="card-deck">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h4 class="card-title text-info">Development Time</h4>
+                                <ul>
+                                    <li><h6>180-hours</h6></li>
+                                    <li><h6>Link: https://oj-statustracker.herokuapp.com </h6></li>
+                                </ul>
+                                <div class="icon">
+                                    <img src="~/assets/Images/avatar2.jpg" class="rounded-circle" alt="">
+                                </div>
+                                <div class="content m-t-5">
+                                    <div>Team Lead</div>
+                                    <h6>Beth Olmo</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h4 class="card-title text-info">Technologies Used</h4>
+                                <ul>
+                                    <li><h6>C#, HTML, CSS, JS, Bootstrap</h6></li>
+                                    <li><h6>ASP.Net Core, MVC, Docker, Heroku, PostgreSQL, pgAdmin</h6></li>
+                                    <li><h6>Visual Studio 2019, MS SQL, GitHub, Netlify, Canva</h6></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!------------------>
+    <!--  Dragon Blog -->
+    <!------------------>
+    <div class="modal" id="myModal2">
+        <div class="modal-dialog-centered modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center bg-danger">
+                    <h4 class="modal-title text-white">Dragon Blog</h4>
+                </div>
+                <div class="modal-body bg-light justify-content-center">
+                    <div class="card-deck">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h4 class="card-title text-danger">Development Time</h4>
+                                <ul>
+                                    <li><h6>80-hours</h6></li>
+                                    <li><h6>Link: https://dragonblog2.herokuapp.com </h6></li>
+                                </ul>
+                                <div class="icon">
+                                    <img src="~/assets/Images/avatar3.jpg" class="rounded-circle" alt="">
+                                </div>
+                                <div class="content m-t-5">
+                                    <div>Team Lead</div>
+                                    <h6>Cindy Kane</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h4 class="card-title text-danger">Technologies Used</h4>
+                                <ul>
+                                    <li><h6>C#, HTML, CSS, JS, Bootstrap</h6></li>
+                                    <li><h6>ASP.Net Core, MVC, Docker, Heroku, PostgreSQL, pgAdmin</h6></li>
+                                    <li><h6>Visual Studio 2019, MS SQL, GitHub, Netlify, Canva</h6></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--------------------->
+    <!--  Address Book   -->
+    <!--------------------->
+    <div class="modal" id="myModal3">
+        <div class="modal-dialog-centered modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center bg-warning">
+                    <h4 class="modal-title text-white">Address Book App</h4>
+                </div>
+                <div class="modal-body bg-light justify-content-center">
+                    <div class="card-deck">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h4 class="card-title text-warning">Development Time</h4>
+                                <ul>
+                                    <li><h6>40-hours</h6></li>
+                                    <li><h6>Link: https://oj-addressbook.herokuapp.com </h6></li>
+                                </ul>
+                                <div class="icon">
+                                    <img src="~/assets/Images/avatar7.jpg" class="rounded-circle" alt="">
+                                </div>
+                                <div class="content m-t-5">
+                                    <div>Team Lead</div>
+                                    <h6>Tere Olmo</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h4 class="card-title text-warning">Technologies Used</h4>
+                                <ul>
+                                    <li><h6>C#, HTML, CSS, JS, Bootstrap</h6></li>
+                                    <li><h6>ASP.Net Core, MVC, Docker, Heroku, PostgreSQL, pgAdmin</h6></li>
+                                    <li><h6>Visual Studio 2019, MS SQL, GitHub, Netlify, Canva</h6></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-outline-warning" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-------------------->
+    <!-- Money Tracker --->
+    <!-------------------->
+    <div class="modal" id="myModal4">
+        <div class="modal-dialog-centered modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center bg-success">
+                    <h3 class="modal-title text-white">Money Tracker</h3>
+                </div>
+                <div class="modal-body bg-light justify-content-center">
+                    <div class="card-deck">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h4 class="card-title text-success">Development Time</h4>
+                                <ul>
+                                    <li><h6>100-hours</h6></li>
+                                    <li><h6>Link: https://oj-moneytracker.herokuapp.com </h6></li>
+                                </ul>
+                                <div class="icon">
+                                    <img src="~/assets/Images/avatar9.jpg" class="rounded-circle" alt="">
+                                </div>
+                                <div class="content m-t-5">
+                                    <div>Team Lead</div>
+                                    <h6>OJ Olmo</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h4 class="card-title text-success">Technologies Used</h4>
+                                <ul>
+                                    <li><h6>C#, HTML, CSS, JS, Bootstrap</h6></li>
+                                    <li><h6>ASP.Net Core, MVC, Docker, Heroku, PostgreSQL, pgAdmin</h6></li>
+                                    <li><h6>Visual Studio 2019, MS SQL, GitHub, Netlify, Canva</h6></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-outline-success" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+
 </div>
 
+    @section Scripts{
 
-
-@section Scripts{
-
-    <script>
+        <script>
         //Construct the URL needed to draw the chart.
         var Url1 = '@Url.Action("PriorityChart", "Charts")';
         var data = {
@@ -178,9 +369,9 @@
 
         });
 
-    </script>
+        </script>
 
-}
+    }
 
 
 

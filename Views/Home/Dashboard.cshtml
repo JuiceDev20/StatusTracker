@@ -10,18 +10,7 @@
 <!-- Top Left Website Stats -->
 <!----------------------------->
 <div class="container-fluid">
-    <div class="block-header">
-        <div class="row">
-            <div class="col-lg-6 col-md-8 col-sm-12">
-                <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a>Nav Panel</h2>
-                <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Dashboard"><i class="icon-home"></i></a></li>
-                    <li class="breadcrumb-item active">Admin Dashboard</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
+    <br />
     <!-------------------->
     <!-- Master Console -->
     <!-------------------->
@@ -29,66 +18,67 @@
         <div class="col-12">
             <div class="card" style="height:450px">
                 <h3 class="card-title text-primary ml-4">Master Console</h3>
-                <!-- Admin Buttons -->
+                <!-- Ticket Buttons -->
                 <div class="body">
                     <div class="row">
-                        <div class="col-3">
+                        <div class="col-4">
                             <div class="card text-center">
                                 <div class="body bg-light">
-                                    <a class="btn btn-danger" asp-controller="Tickets" asp-action="MyTopTickets"><i class="icon-fire"></i> Urgent Tickets</a>                           
+                                    <a class="btn btn-danger" asp-controller="Tickets" asp-action="MyTopTickets"><i class="icon-fire"></i> Urgent Tickets</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-3">
-                            <div class="card text-center">
-                                <div class="body bg-light">
-                                    <a asp-controller="Projects" asp-action="MyProjects" class="btn btn-primary"><i class="icon-bulb"></i> Manage Projects</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3">
+                        <div class="col-4">
                             <div class="card text-center">
                                 <div class="body bg-light">
                                     <a asp-controller="Tickets" asp-action="MyTickets" class="btn btn-primary"><i class="icon-tag"></i> Manage Tickets</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-3">
-                            <div class="card text-center">
-                                <div class="body bg-light">
-                                    <a asp-controller="UserRoles" asp-action="ManageUserRoles" class="btn btn-primary"><i class="icon-users"></i> Manage Roles</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Team Buttons -->
-                <div class="body">
-                    <div class="row">
                         <div class="col-4">
                             <div class="card text-center">
                                 <div class="body bg-light">
                                     <a asp-controller="TicketHistories" asp-action="Index" class="btn btn-primary"><i class="icon-book-open"></i> Ticket Histories</a>
+                                   
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
+                </div>
+                <!-- Project Buttons -->
+                <div class="body">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="card text-center">
+                                <div class="body bg-light">
+                                    <a asp-controller="Projects" asp-action="MyProjects" class="btn btn-secondary"><i class="icon-map"></i> Manage Projects</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-3">
                             <div class="card text-center">
                                 <div class="body bg-light">
-                                    <a class="btn btn-primary" data-toggle="modal" data-target="#ProjectDetails"><i class="icon-calculator"></i> Project Budgets</a>
+                                    <a asp-controller="UserRoles" asp-action="ManageUserRoles" class="btn btn-secondary"><i class="icon-users"></i> Manage Roles</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-3">
                             <div class="card text-center">
                                 <div class="body bg-light">
-                                    <a class="btn btn-primary" data-toggle="modal" data-target="#TeamPerf"><i class="icon-badge"></i> Team Performance</a>
+                                    <a class="btn btn-secondary" data-toggle="modal" data-target="#ProjectDetails"><i class="icon-calculator"></i> Project Budgets</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card text-center">
+                                <div class="body bg-light">
+                                    <a class="btn btn-secondary" data-toggle="modal" data-target="#TeamPerf"><i class="icon-badge"></i> Team Performance</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Project Buttons -->
+                <!-- Completed Apps -->
                 <div class="body">
                     <div class="row">
                         <div class="col-3">
@@ -101,7 +91,7 @@
                         <div class="col-3">
                             <div class="card text-center">
                                 <div class="body bg-light">
-                                    <a class="btn btn-danger" data-toggle="modal" data-target="#myModal2"><i class="icon-pencil"></i> Pro Blog</a>
+                                    <a class="btn btn-danger" data-toggle="modal" data-target="#myModal2"><i class="icon-pencil"></i> Dragon Blog</a>
                                 </div>
                             </div>
                         </div>
@@ -130,391 +120,403 @@
     <!-- Line Chart -->
     <!---------------->
     <div class="row">
-        <div class="col-12">
-            <div class="card" style="height:440px">
+        <div class="col-10">
+            <div class="card" style="height:430px">
                 <div class="card-body">
                     <h5 class="card-title text-primary">2021 Q1 Schedule</h5>
-                </div>
-                <div class="body">
                     <div id="FutureSchedule" class="ct-chart"></div>
+                </div>
+            </div>
+
+        </div>
+ 
+        <!----------------->
+        <!-- Donot Chart -->
+        <!----------------->
+        <div class="col-2">
+            <div class="card" style="height:430px">
+                <div class="card-body">
+                    <h4 class="card-title text-primary align-content-center">Staff</h4>
+                    <div>
+                        <br />
+                        <h6 class="card-title">Local</h6>
+                        <input type="text" class="knob2" data-linecap="round" value="67" data-width="125" data-height="125" data-thickness="0.15" data-fgColor="#49a9e5" readonly>
+                        <br>
+                        <h6 class="card-title">Remote</h6>
+                        <input type="text" class="knob2" data-linecap="round" value="33" data-width="125" data-height="125" data-thickness="0.15" data-fgColor="#b880e1" readonly>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-</div>
+    <!--------------------------->
+    <!-- Master Console Modals -->
+    <!--------------------------->
 
-<!--------------------------->
-<!-- Master Console Modals -->
-<!--------------------------->
+    <div class="row clearfix">
 
-<div class="row clearfix">
-
-    <!----------------------->
-    <!-- My Urgent Tickets -->
-    <!----------------------->
-    <!----------------------------->
-    <!-- Project $ Details Modal -->
-    <!----------------------------->
-    <div class="modal" id="ProjectDetails">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title text-primary">Project Budget Details</h4>
-                </div>
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <div class="row clearfix">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="body">
-                                    <div class="table-responsive">
-                                        <table class="table m-b-0 table-hover">
-                                            <thead class="thead-purple">
-                                                <tr>
-                                                    <th>Application</th>
-                                                    <th>Team Lead</th>
-                                                    <th>Wages</th>
-                                                    <th>Overhead</th>
-                                                    <th>Total</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <h6 class="text-info">Status Tracker</h6>
-                                                        <span>Turquoise Team</span>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-unstyled team-info">
-                                                            <li><img src="~/assets/Images/avatar2.jpg" alt="Avatar"></li>
-                                                        </ul>
-                                                    </td>
-                                                    <td>8,400</td>
-                                                    <td>$3,360</td>
-                                                    <td><strong>$36,960</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <h6 class="text-danger">Pro Blog</h6>
-                                                        <span>Ruby Team</span>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-unstyled team-info">
-                                                            <li><img src="~/assets/Images/avatar3.jpg" alt="Avatar" /></li>
-                                                        </ul>
-                                                    </td>
-                                                    <td>7,800</td>
-                                                    <td>$1,560</td>
-                                                    <td><strong>$17,160</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <h6 class="text-warning">Address Book</h6>
-                                                        <span>Garnet Team</span>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-unstyled team-info">
-                                                            <li><img src="~/assets/Images/avatar7.jpg" alt="Avatar"></li>
-                                                        </ul>
-                                                    </td>
-                                                    <td>7,800</td>
-                                                    <td>$780</td>
-                                                    <td><strong>$8,580</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <h6 class="text-success">Money Tracker</h6>
-                                                        <span>Emerald Team</span>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-unstyled team-info">
-                                                            <li><img src="~/assets/Images/avatar9.jpg" alt="Avatar"></li>
-                                                        </ul>
-                                                    </td>
-                                                    <td>7,800</td>
-                                                    <td>$1,560</td>
-                                                    <td><strong>$17,160</strong></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+        <!----------------------------->
+        <!-- Project $ Details Modal -->
+        <!----------------------------->
+        <div class="modal" id="ProjectDetails">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title text-primary">Project Budget Details</h4>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="row clearfix">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="body">
+                                        <div class="table-responsive">
+                                            <table class="table m-b-0 table-hover">
+                                                <thead class="thead-purple">
+                                                    <tr>
+                                                        <th>Application</th>
+                                                        <th>Team Lead</th>
+                                                        <th>Wages</th>
+                                                        <th>Overhead</th>
+                                                        <th>Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <h6 class="text-info">Status Tracker</h6>
+                                                            <span>Turquoise Team</span>
+                                                        </td>
+                                                        <td>
+                                                            <ul class="list-unstyled team-info">
+                                                                <li><img src="~/assets/Images/avatar2.jpg" alt="Avatar"></li>
+                                                            </ul>
+                                                        </td>
+                                                        <td>8,400</td>
+                                                        <td>$3,360</td>
+                                                        <td><strong>$36,960</strong></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <h6 class="text-danger">Pro Blog</h6>
+                                                            <span>Ruby Team</span>
+                                                        </td>
+                                                        <td>
+                                                            <ul class="list-unstyled team-info">
+                                                                <li><img src="~/assets/Images/avatar3.jpg" alt="Avatar" /></li>
+                                                            </ul>
+                                                        </td>
+                                                        <td>7,800</td>
+                                                        <td>$1,560</td>
+                                                        <td><strong>$17,160</strong></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <h6 class="text-warning">Address Book</h6>
+                                                            <span>Garnet Team</span>
+                                                        </td>
+                                                        <td>
+                                                            <ul class="list-unstyled team-info">
+                                                                <li><img src="~/assets/Images/avatar7.jpg" alt="Avatar"></li>
+                                                            </ul>
+                                                        </td>
+                                                        <td>7,800</td>
+                                                        <td>$780</td>
+                                                        <td><strong>$8,580</strong></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <h6 class="text-success">Money Tracker</h6>
+                                                            <span>Emerald Team</span>
+                                                        </td>
+                                                        <td>
+                                                            <ul class="list-unstyled team-info">
+                                                                <li><img src="~/assets/Images/avatar9.jpg" alt="Avatar"></li>
+                                                            </ul>
+                                                        </td>
+                                                        <td>7,800</td>
+                                                        <td>$1,560</td>
+                                                        <td><strong>$17,160</strong></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!---------------------------->
-    <!-- Team Performance Modal -->
-    <!---------------------------->
-    <div class="modal" id="TeamPerf">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title text-primary">Team Performance</h4>
-                </div>
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <div class="table-responsive">
-                        <table class="table table-hover m-b-0">
-                            <thead class="thead-purple">
-                                <tr>
-                                    <th>Avatar</th>
-                                    <th>Name</th>
-                                    <th>Team</th>
-                                    <th>Performance</th>
-                                    <th>Work Location</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><img src="~/assets/Images/avatar9.jpg" class="rounded-circle width35" alt=""></td>
-                                    <td>Orlando Olmo</td>
-                                    <td><span>Emerald</span></td>
-                                    <td><span class="badge badge-success">Good</span></td>
-                                    <td class="text-primary">Local</td>
-                                </tr>
-                                <tr>
-                                    <td><img src="~/assets/Images/avatar2.jpg" class="rounded-circle width35" alt=""></td>
-                                    <td>Erin Crommett</td>
-                                    <td><span>Sakura</span></td>
-                                    <td><span class="badge badge-primary">Excellent</span></td>
-                                    <td class="text-danger">Remote</td>
-                                </tr>
-                                <tr>
-                                    <td><img src="~/assets/Images/avatar7.jpg" class="rounded-circle width35" alt=""></td>
-                                    <td>Tere Olmo</td>
-                                    <td><span>Garnet</span></td>
-                                    <td><span class="badge badge-primary">Excellent</span></td>
-                                    <td class="text-primary">Local</td>
-                                </tr>
-                                <tr>
-                                    <td><img src="~/assets/Images/avatar2.jpg" class="rounded-circle width35" alt=""></td>
-                                    <td>Beth Olmo</td>
-                                    <td><span>Turquoise</span></td>
-                                    <td><span class="badge badge-primary">Excellent</span></td>
-                                    <td class="text-primary">Local</td>
-                                </tr>
-                                <tr>
-                                    <td><img src="~/assets/Images/avatar4.jpg" class="rounded-circle width35" alt=""></td>
-                                    <td>Lucy Black</td>
-                                    <td><span>Hibiscus</span></td>
-                                    <td><span class="badge badge-success">Good</span></td>
-                                    <td class="text-danger">Remote</td>
-                                </tr>
-                                <tr>
-                                    <td><img src="~/assets/Images/avatar3.jpg" class="rounded-circle width35" alt=""></td>
-                                    <td>Cindy Kane</td>
-                                    <td><span>Ruby</span></td>
-                                    <td><span class="badge badge-warning">Average</span></td>
-                                    <td class="text-primary">Local</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     </div>
                 </div>
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
             </div>
         </div>
-    </div>
 
-    <!-------------------->
-    <!-- Status Tracker -->
-    <!-------------------->
-    <div class="modal" id="myModal1">
-        <div class="modal-dialog-centered modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header justify-content-center bg-info">
-                    <h3 class="modal-title text-white">Status Tracker</h3>
-                </div>
-                <div class="modal-body bg-light justify-content-center">
-                    <div class="card-deck">
-                        <div class="card bg-light">
-                            <div class="card-body">
-                                <h4 class="card-title text-info">Development Time</h4>
-                                <ul>
-                                    <li><h6>180-hours</h6></li>
-                                    <li><h6>Link: https://oj-statustracker.herokuapp.com </h6></li>
-                                </ul>
-                                <div class="icon">
-                                    <img src="~/assets/Images/avatar2.jpg" class="rounded-circle" alt="">
-                                </div>
-                                <div class="content m-t-5">
-                                    <div>Team Lead</div>
-                                    <h6>Beth Olmo</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card bg-light">
-                            <div class="card-body">
-                                <h4 class="card-title text-info">Technologies Used</h4>
-                                <ul>
-                                    <li><h6>C#, HTML, CSS, JS, Bootstrap</h6></li>
-                                    <li><h6>ASP.Net Core, MVC, Docker, Heroku, PostgreSQL, pgAdmin</h6></li>
-                                    <li><h6>Visual Studio 2019, MS SQL, GitHub, Netlify, Canva</h6></li>
-                                </ul>
-                            </div>
+        <!---------------------------->
+        <!-- Team Performance Modal -->
+        <!---------------------------->
+        <div class="modal" id="TeamPerf">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title text-primary">Team Performance</h4>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover m-b-0">
+                                <thead class="thead-purple">
+                                    <tr>
+                                        <th>Avatar</th>
+                                        <th>Name</th>
+                                        <th>Team</th>
+                                        <th>Performance</th>
+                                        <th>Work Location</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><img src="~/assets/Images/avatar9.jpg" class="rounded-circle width35" alt=""></td>
+                                        <td>Orlando Olmo</td>
+                                        <td><span>Emerald</span></td>
+                                        <td><span class="badge badge-success">Good</span></td>
+                                        <td class="text-primary">Local</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="~/assets/Images/avatar2.jpg" class="rounded-circle width35" alt=""></td>
+                                        <td>Erin Crommett</td>
+                                        <td><span>Sakura</span></td>
+                                        <td><span class="badge badge-primary">Excellent</span></td>
+                                        <td class="text-danger">Remote</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="~/assets/Images/avatar7.jpg" class="rounded-circle width35" alt=""></td>
+                                        <td>Tere Olmo</td>
+                                        <td><span>Garnet</span></td>
+                                        <td><span class="badge badge-primary">Excellent</span></td>
+                                        <td class="text-primary">Local</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="~/assets/Images/avatar2.jpg" class="rounded-circle width35" alt=""></td>
+                                        <td>Beth Olmo</td>
+                                        <td><span>Turquoise</span></td>
+                                        <td><span class="badge badge-primary">Excellent</span></td>
+                                        <td class="text-primary">Local</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="~/assets/Images/avatar4.jpg" class="rounded-circle width35" alt=""></td>
+                                        <td>Lucy Black</td>
+                                        <td><span>Hibiscus</span></td>
+                                        <td><span class="badge badge-success">Good</span></td>
+                                        <td class="text-danger">Remote</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="~/assets/Images/avatar3.jpg" class="rounded-circle width35" alt=""></td>
+                                        <td>Cindy Kane</td>
+                                        <td><span>Ruby</span></td>
+                                        <td><span class="badge badge-warning">Average</span></td>
+                                        <td class="text-primary">Local</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer bg-light">
-                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">Close</button>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!----------------->
-    <!--  Pro Blog   -->
-    <!----------------->
-    <div class="modal" id="myModal2">
-        <div class="modal-dialog-centered modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header justify-content-center bg-danger">
-                    <h4 class="modal-title text-white">Dragon Blog App</h4>
-                </div>
-                <div class="modal-body bg-light justify-content-center">
-                    <div class="card-deck">
-                        <div class="card bg-light">
-                            <div class="card-body">
-                                <h4 class="card-title text-danger">Development Time</h4>
-                                <ul>
-                                    <li><h6>80-hours</h6></li>
-                                    <li><h6>Link: https://dragonblog2.herokuapp.com </h6></li>
-                                </ul>
-                                <div class="icon">
-                                    <img src="~/assets/Images/avatar3.jpg" class="rounded-circle" alt="">
-                                </div>
-                                <div class="content m-t-5">
-                                    <div>Team Lead</div>
-                                    <h6>Cindy Kane</h6>
+        <!-------------------->
+        <!-- Status Tracker -->
+        <!-------------------->
+        <div class="modal" id="myModal1">
+            <div class="modal-dialog-centered modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center bg-info">
+                        <h3 class="modal-title text-white">Status Tracker</h3>
+                    </div>
+                    <div class="modal-body bg-light justify-content-center">
+                        <div class="card-deck">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h4 class="card-title text-info">Development Time</h4>
+                                    <ul>
+                                        <li><h6>180-hours</h6></li>
+                                        <li><h6>Link: https://oj-statustracker.herokuapp.com </h6></li>
+                                    </ul>
+                                    <div class="icon">
+                                        <img src="~/assets/Images/avatar2.jpg" class="rounded-circle" alt="">
+                                    </div>
+                                    <div class="content m-t-5">
+                                        <div>Team Lead</div>
+                                        <h6>Beth Olmo</h6>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card bg-light">
-                            <div class="card-body">
-                                <h4 class="card-title text-danger">Technologies Used</h4>
-                                <ul>
-                                    <li><h6>C#, HTML, CSS, JS, Bootstrap</h6></li>
-                                    <li><h6>ASP.Net Core, MVC, Docker, Heroku, PostgreSQL, pgAdmin</h6></li>
-                                    <li><h6>Visual Studio 2019, MS SQL, GitHub, Netlify, Canva</h6></li>
-                                </ul>
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h4 class="card-title text-info">Technologies Used</h4>
+                                    <ul>
+                                        <li><h6>C#, HTML, CSS, JS, Bootstrap</h6></li>
+                                        <li><h6>ASP.Net Core, MVC, Docker, Heroku, PostgreSQL, pgAdmin</h6></li>
+                                        <li><h6>Visual Studio 2019, MS SQL, GitHub, Netlify, Canva</h6></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer bg-light">
-                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                    <div class="modal-footer bg-light">
+                        <button type="button" class="btn btn-outline-info" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!--------------------->
-    <!--  Address Book   -->
-    <!--------------------->
-    <div class="modal" id="myModal3">
-        <div class="modal-dialog-centered modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header justify-content-center bg-warning">
-                    <h4 class="modal-title text-white">Address Book App</h4>
-                </div>
-                <div class="modal-body bg-light justify-content-center">
-                    <div class="card-deck">
-                        <div class="card bg-light">
-                            <div class="card-body">
-                                <h4 class="card-title text-warning">Development Time</h4>
-                                <ul>
-                                    <li><h6>40-hours</h6></li>
-                                    <li><h6>Link: https://oj-addressbook.herokuapp.com </h6></li>
-                                </ul>
-                                <div class="icon">
-                                    <img src="~/assets/Images/avatar7.jpg" class="rounded-circle" alt="">
-                                </div>
-                                <div class="content m-t-5">
-                                    <div>Team Lead</div>
-                                    <h6>Tere Olmo</h6>
+        <!----------------->
+        <!--  Pro Blog   -->
+        <!----------------->
+        <div class="modal" id="myModal2">
+            <div class="modal-dialog-centered modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center bg-danger">
+                        <h4 class="modal-title text-white">Dragon Blog</h4>
+                    </div>
+                    <div class="modal-body bg-light justify-content-center">
+                        <div class="card-deck">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h4 class="card-title text-danger">Development Time</h4>
+                                    <ul>
+                                        <li><h6>80-hours</h6></li>
+                                        <li><h6>Link: https://dragonblog2.herokuapp.com </h6></li>
+                                    </ul>
+                                    <div class="icon">
+                                        <img src="~/assets/Images/avatar3.jpg" class="rounded-circle" alt="">
+                                    </div>
+                                    <div class="content m-t-5">
+                                        <div>Team Lead</div>
+                                        <h6>Cindy Kane</h6>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card bg-light">
-                            <div class="card-body">
-                                <h4 class="card-title text-warning">Technologies Used</h4>
-                                <ul>
-                                    <li><h6>C#, HTML, CSS, JS, Bootstrap</h6></li>
-                                    <li><h6>ASP.Net Core, MVC, Docker, Heroku, PostgreSQL, pgAdmin</h6></li>
-                                    <li><h6>Visual Studio 2019, MS SQL, GitHub, Netlify, Canva</h6></li>
-                                </ul>
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h4 class="card-title text-danger">Technologies Used</h4>
+                                    <ul>
+                                        <li><h6>C#, HTML, CSS, JS, Bootstrap</h6></li>
+                                        <li><h6>ASP.Net Core, MVC, Docker, Heroku, PostgreSQL, pgAdmin</h6></li>
+                                        <li><h6>Visual Studio 2019, MS SQL, GitHub, Netlify, Canva</h6></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer bg-light">
-                    <button type="button" class="btn btn-outline-warning" data-dismiss="modal">Close</button>
+                    <div class="modal-footer bg-light">
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-------------------->
-    <!-- Money Tracker --->
-    <!-------------------->
-    <div class="modal" id="myModal4">
-        <div class="modal-dialog-centered modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header justify-content-center bg-success">
-                    <h3 class="modal-title text-white">Money Tracker</h3>
-                </div>
-                <div class="modal-body bg-light justify-content-center">
-                    <div class="card-deck">
-                        <div class="card bg-light">
-                            <div class="card-body">
-                                <h4 class="card-title text-success">Development Time</h4>
-                                <ul>
-                                    <li><h6>100-hours</h6></li>
-                                    <li><h6>Link: https://oj-moneytracker.herokuapp.com </h6></li>
-                                </ul>
-                                <div class="icon">
-                                    <img src="~/assets/Images/avatar9.jpg" class="rounded-circle" alt="">
-                                </div>
-                                <div class="content m-t-5">
-                                    <div>Team Lead</div>
-                                    <h6>OJ Olmo</h6>
+        <!--------------------->
+        <!--  Address Book   -->
+        <!--------------------->
+        <div class="modal" id="myModal3">
+            <div class="modal-dialog-centered modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center bg-warning">
+                        <h4 class="modal-title text-white">Address Book App</h4>
+                    </div>
+                    <div class="modal-body bg-light justify-content-center">
+                        <div class="card-deck">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h4 class="card-title text-warning">Development Time</h4>
+                                    <ul>
+                                        <li><h6>40-hours</h6></li>
+                                        <li><h6>Link: https://oj-addressbook.herokuapp.com </h6></li>
+                                    </ul>
+                                    <div class="icon">
+                                        <img src="~/assets/Images/avatar7.jpg" class="rounded-circle" alt="">
+                                    </div>
+                                    <div class="content m-t-5">
+                                        <div>Team Lead</div>
+                                        <h6>Tere Olmo</h6>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card bg-light">
-                            <div class="card-body">
-                                <h4 class="card-title text-success">Technologies Used</h4>
-                                <ul>
-                                    <li><h6>C#, HTML, CSS, JS, Bootstrap</h6></li>
-                                    <li><h6>ASP.Net Core, MVC, Docker, Heroku, PostgreSQL, pgAdmin</h6></li>
-                                    <li><h6>Visual Studio 2019, MS SQL, GitHub, Netlify, Canva</h6></li>
-                                </ul>
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h4 class="card-title text-warning">Technologies Used</h4>
+                                    <ul>
+                                        <li><h6>C#, HTML, CSS, JS, Bootstrap</h6></li>
+                                        <li><h6>ASP.Net Core, MVC, Docker, Heroku, PostgreSQL, pgAdmin</h6></li>
+                                        <li><h6>Visual Studio 2019, MS SQL, GitHub, Netlify, Canva</h6></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer bg-light">
-                    <button type="button" class="btn btn-outline-success" data-dismiss="modal">Close</button>
+                    <div class="modal-footer bg-light">
+                        <button type="button" class="btn btn-outline-warning" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-------------------->
+        <!-- Money Tracker --->
+        <!-------------------->
+        <div class="modal" id="myModal4">
+            <div class="modal-dialog-centered modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center bg-success">
+                        <h3 class="modal-title text-white">Money Tracker</h3>
+                    </div>
+                    <div class="modal-body bg-light justify-content-center">
+                        <div class="card-deck">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h4 class="card-title text-success">Development Time</h4>
+                                    <ul>
+                                        <li><h6>100-hours</h6></li>
+                                        <li><h6>Link: https://oj-moneytracker.herokuapp.com </h6></li>
+                                    </ul>
+                                    <div class="icon">
+                                        <img src="~/assets/Images/avatar9.jpg" class="rounded-circle" alt="">
+                                    </div>
+                                    <div class="content m-t-5">
+                                        <div>Team Lead</div>
+                                        <h6>OJ Olmo</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h4 class="card-title text-success">Technologies Used</h4>
+                                    <ul>
+                                        <li><h6>C#, HTML, CSS, JS, Bootstrap</h6></li>
+                                        <li><h6>ASP.Net Core, MVC, Docker, Heroku, PostgreSQL, pgAdmin</h6></li>
+                                        <li><h6>Visual Studio 2019, MS SQL, GitHub, Netlify, Canva</h6></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer bg-light">
+                        <button type="button" class="btn btn-outline-success" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
-
-
-
-</div>
