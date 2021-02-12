@@ -1,11 +1,15 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using StatusTracker.Services
+@using System;
+@using System.Linq;
+@using StatusTracker.Models.ViewModels;
 
 @inject UserManager<STUser> UserManager
 @inject ISTAccessService AccessService
 @inject ISTRolesService RolesService
 
-@model StatusTracker.Models.Ticket
+@model IEnumerable<StatusTracker.Models.Ticket>
+
 <!----------------------------->
 <!-- Top Left Website Stats -->
 <!----------------------------->
@@ -39,10 +43,9 @@
                             <div class="card text-center">
                                 <div class="body bg-light">
                                     <a asp-controller="TicketHistories" asp-action="Index" class="btn btn-primary"><i class="icon-book-open"></i> Ticket Histories</a>
-                                   
                                 </div>
                             </div>
-                        </div>                
+                        </div>
                     </div>
                 </div>
                 <!-- Project Buttons -->
@@ -116,6 +119,8 @@
         <!-- asp-controller="Tickets" asp-action="MyTopTickets"  -->
     </div>
 
+</div>
+
     <!---------------->
     <!-- Line Chart -->
     <!---------------->
@@ -129,7 +134,7 @@
             </div>
 
         </div>
- 
+
         <!----------------->
         <!-- Donot Chart -->
         <!----------------->
